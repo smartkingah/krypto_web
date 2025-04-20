@@ -16,7 +16,8 @@ import '../../../providers/general_provider.dart';
 import '../../Screens/dashboard/transactions_screens/no_gas_fee_cont.dart';
 
 class DepositWalletScreen extends StatefulWidget {
-  const DepositWalletScreen({super.key});
+  final String fromPage;
+  const DepositWalletScreen({this.fromPage = "", super.key});
 
   @override
   State<DepositWalletScreen> createState() => _DepositWalletScreenState();
@@ -69,6 +70,8 @@ class _DepositWalletScreenState extends State<DepositWalletScreen> {
       gasFeeIsLoading = true;
     });
     await FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection('admins')
         .doc('adminDetails')
         .get()
@@ -78,7 +81,7 @@ class _DepositWalletScreenState extends State<DepositWalletScreen> {
         gasFee = data!['gas_fee'];
         adminWalletAddress = data['wallet_address'];
         network = data['network'];
-        btcValueFromFirebase = data['bitcoin_price_to_usd'];
+        // btcValueFromFirebase = data['bitcoin_price_to_usd'];
       });
     }).then((v) {
       setState(() {
@@ -213,11 +216,13 @@ class _DepositWalletScreenState extends State<DepositWalletScreen> {
         ),
         centerTitle: true,
         toolbarHeight: 120,
-        leading: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Icon(Icons.arrow_back, color: white)),
+        leading: widget.fromPage.isEmpty
+            ? GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(Icons.arrow_back, color: white))
+            : SizedBox(),
       ),
       body: gasFeeIsLoading
           ? Center(

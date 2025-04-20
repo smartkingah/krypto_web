@@ -3,7 +3,8 @@ import '../../Widgets/footer_page.dart';
 import 'mobile_footer.dart';
 
 class MobileSupportPage extends StatefulWidget {
-  const MobileSupportPage({super.key});
+  final String fromPage;
+  const MobileSupportPage({this.fromPage = "", super.key});
 
   @override
   State<MobileSupportPage> createState() => _MobileSupportPageState();

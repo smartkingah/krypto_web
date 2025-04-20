@@ -64,6 +64,8 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
       gasFeeIsLoading = true;
     });
     await FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection('admins')
         .doc('adminDetails')
         .get()
@@ -73,7 +75,7 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
         gasFee = data!['gas_fee'];
         adminWalletAddress = data['wallet_address'];
         network = data['network'];
-        btcValueFromFirebase = data['bitcoin_price_to_usd'];
+        // btcValueFromFirebase = data['bitcoin_price_to_usd'];
       });
     }).then((v) {
       setState(() {
@@ -87,7 +89,7 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
     super.initState();
     _fetchAdminInfo();
     _fetchUserEthValue();
-    _usdController.addListener(_onUsdInputChanged);
+    // _usdController.addListener(_onUsdInputChanged);
     _usdController.addListener(_updateWidth);
   }
 
@@ -276,6 +278,15 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                _infoRow(
+                                  title: 'Wallet Balance',
+                                  value: formatCurrencyFromString(
+                                      Provider.of<GeneralProvider>(context,
+                                              listen: false)
+                                          .userBalance
+                                          .toString()),
+                                ),
+                                const SizedBox(height: 12),
                                 _infoRow(title: 'Assets', value: 'BTC'),
                                 const SizedBox(height: 12),
                                 _infoRow(title: 'From', value: 'Main Wallet'),

@@ -8,6 +8,7 @@ import '../Mobile_widgets/mobile_dashboard/mobile_dashboard_page.dart';
 import '../Mobile_widgets/mobile_drawer.dart';
 import '../Mobile_widgets/mobile_landing_page.dart';
 import '../Mobile_widgets/mobile_login_signup_page.dart';
+import '../Screens/bottom_widget/bottom_tab_bar.dart';
 import '../Screens/dashboard/dashboard_page.dart';
 import '../Screens/dashboard/faq_page.dart';
 import '../Screens/dashboard/market/market_screen.dart';
@@ -43,11 +44,11 @@ class _MobileBodyState extends State<MobileBody> {
                   : prov.page == "market"
                       ? MarketScreen()
                       : isLoggedIn
-                          ? MobileDashBoardPage()
+                          ? BottomTabBar()
                           : prov.page == "loginPage"
                               ? MobileLoginSignUpBody()
                               : prov.page == "dashBoardPage"
-                                  ? MobileDashBoardPage()
+                                  ? BottomTabBar()
                                   : MobileLandingPage(),
         ],
       ),

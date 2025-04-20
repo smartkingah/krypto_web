@@ -69,8 +69,6 @@ class _UserContState extends State<UserCont> {
                 fontSize: kTextSmaller,
               ),
             ),
-            Spacer(),
-            UpdateAdminItem(),
           ],
         ),
         SizedBox(height: 30),

@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../../../Utils/color/color.dart';
 import '../../../Utils/dimens.dart';
+import '../update_admin_items.dart';
 import 'add_crypto_to_dialog.dart';
 
 class UserDetailsContPage extends StatefulWidget {
@@ -29,12 +30,14 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
   /// Create a list of controllers
   List<TextEditingController> cryptoControllerValue = [];
   List<TextEditingController> usdController = [];
+  List<TextEditingController> priceController = [];
 
   int _updatingIndex = 0;
 
   bool isUsdLoading = false;
   bool isUserProfileLoading = false;
   bool isCryptoLoading = false;
+  bool isCryptoPriceLoading = false;
   @override
   void initState() {
     // TODO: implement initState
@@ -77,7 +80,15 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            BackButton(color: Colors.black),
+            Row(
+              children: [
+                BackButton(color: Colors.black),
+                Spacer(),
+                UpdateAdminItem(
+                  userId: widget.data['userId'],
+                ),
+              ],
+            ),
 
             ///update of user datas
             SizedBox(height: 30),
@@ -133,6 +144,8 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
 
             ///update of user crypto datas
             SizedBox(height: 50),
+
+            ///appbar
             Row(
               children: [
                 CircleAvatar(
@@ -169,6 +182,8 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
                 ),
               ],
             ),
+
+            ///
             SizedBox(height: 25),
             StreamBuilder(
               stream: FirebaseFirestore.instance
@@ -197,14 +212,18 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
                         text: data['cryptoValue'].toString());
                     final controller2 = TextEditingController(
                         text: data['usdValue'].toString());
+                    final priceControllerItem =
+                        TextEditingController(text: data['amount'].toString());
 
                     ///for storage
                     cryptoControllerValue.add(controller);
                     usdController.add(controller2);
+                    priceController.add(priceControllerItem);
 
                     ///for display
                     controller.text = data['cryptoValue'].toString();
                     controller2.text = data['usdValue'].toString();
+                    priceControllerItem.text = data['amount'].toString();
                     return Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10.0),
                       child: Row(
@@ -222,6 +241,15 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
                           SizedBox(width: 20),
                           Row(
                             children: [
+                              tField(
+                                enabled: true,
+                                contr: priceControllerItem,
+                                label: 'Crypto Price',
+                                filter: [
+                                  FilteringTextInputFormatter.allow(
+                                      RegExp(r'^\d*\.?\d*$')),
+                                ],
+                              ),
                               tField(
                                 enabled: true,
                                 contr: controller,
@@ -248,13 +276,31 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
                                 const EdgeInsets.symmetric(horizontal: 20.0),
                             child: Row(
                               children: [
+                                ///updating crypto price
+                                isCryptoPriceLoading && _updatingIndex == index
+                                    ? const CircularProgressIndicator(
+                                        strokeWidth: 1)
+                                    : submitUserDataCont(
+                                        title: 'Update Crypto Price',
+                                        onTap: () => updateUserCryptoField(
+                                              isCrypto: true,
+                                              docId: data.id,
+                                              valueToUpdate: 'amount',
+                                              newValue:
+                                                  priceControllerItem.text,
+                                              isUsd: false,
+                                              index: index,
+                                            )),
+                                SizedBox(width: 20),
+
                                 ///updating crypto value
                                 isCryptoLoading && _updatingIndex == index
                                     ? const CircularProgressIndicator(
                                         strokeWidth: 1)
                                     : submitUserDataCont(
-                                        title: 'Update Crypto',
+                                        title: 'Update Crypto Value',
                                         onTap: () => updateUserCryptoField(
+                                              isCrypto: false,
                                               docId: data.id,
                                               valueToUpdate: 'cryptoValue',
                                               newValue: controller.text,
@@ -270,6 +316,7 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
                                     : submitUserDataCont(
                                         title: 'Update USD',
                                         onTap: () => updateUserCryptoField(
+                                              isCrypto: false,
                                               docId: data.id,
                                               valueToUpdate: 'usdValue',
                                               newValue: controller2.text,
@@ -356,7 +403,7 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
     return Container(
       margin: EdgeInsets.only(left: 20),
       height: 45,
-      width: 250,
+      width: 170,
       decoration: BoxDecoration(
         color: Colors.grey[200],
         borderRadius: BorderRadius.circular(15),
@@ -367,7 +414,7 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
         controller: contr,
         style: TextStyle(
           fontWeight: fWLargerFont,
-          fontSize: kTextSmall,
+          fontSize: kTextMini,
         ),
         decoration: InputDecoration(
             label: Text(label),
@@ -378,7 +425,7 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
     );
   }
 
-  Widget submitUserDataCont({title, onTap, width = 150}) {
+  Widget submitUserDataCont({title, onTap, width = 120}) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -396,6 +443,7 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
             maxLines: 1,
             style: TextStyle(
               color: white,
+              fontSize: kTextTiny,
               fontWeight: fWLargerFont,
             ),
           ),
@@ -411,13 +459,16 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
     required String valueToUpdate,
     required dynamic newValue,
     required bool isUsd,
+    required bool isCrypto,
     required int index,
   }) async {
     setState(() {
       if (isUsd) {
         isUsdLoading = true;
-      } else {
+      } else if (isCrypto) {
         isCryptoLoading = true;
+      } else {
+        isCryptoPriceLoading = true;
       }
       _updatingIndex = index;
     });
@@ -432,7 +483,11 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
     });
 
     setState(() {
-      isUsd ? isUsdLoading = false : isCryptoLoading = false;
+      isUsd
+          ? isUsdLoading = false
+          : isCrypto
+              ? isCryptoPriceLoading = false
+              : isCryptoLoading = false;
       _updatingIndex = -1;
     });
   }

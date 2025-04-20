@@ -6,7 +6,9 @@ import 'local_widget/add_crypto_to_dialog.dart';
 import 'local_widget/update_admin_items.dart';
 
 class UpdateAdminItem extends StatefulWidget {
-  const UpdateAdminItem({super.key});
+  final String userId;
+
+  const UpdateAdminItem({super.key, required this.userId});
 
   @override
   State<UpdateAdminItem> createState() => _UpdateAdminItemState();
@@ -17,6 +19,8 @@ class _UpdateAdminItemState extends State<UpdateAdminItem> {
   Widget build(BuildContext context) {
     return StreamBuilder(
       stream: FirebaseFirestore.instance
+          .collection('users')
+          .doc(widget.userId)
           .collection('admins')
           .doc('adminDetails')
           .snapshots(),
@@ -50,7 +54,8 @@ class _UpdateAdminItemState extends State<UpdateAdminItem> {
                       onTap: () {
                         showDialog(
                           context: context,
-                          builder: (context) => UpdateAdminDetails(),
+                          builder: (context) =>
+                              UpdateAdminDetails(userId: widget.userId),
                         );
                       }),
                 ),
@@ -58,29 +63,7 @@ class _UpdateAdminItemState extends State<UpdateAdminItem> {
             ],
           );
         }
-        return Row(
-          children: [
-            _contItem(title: 'Gas Fee', sub: '3.0'),
-            SizedBox(width: 10),
-            _contItem(title: 'Network', sub: 'ERC20'),
-            SizedBox(width: 10),
-            _contWalletItem(
-                title: 'Wallet Address',
-                sub: 'aklsdjalksjdalksjdalskdjalskdjalskdjalskdjalskdj'),
-            SizedBox(width: 10),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10.0),
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: submitUserDataCont(
-                  width: 120,
-                  title: 'Update Details',
-                  onTap: () => AddCryptoDialog(userId: 'asd'),
-                ),
-              ),
-            ),
-          ],
-        );
+        return Container();
       },
     );
   }

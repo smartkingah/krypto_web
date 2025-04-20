@@ -149,7 +149,7 @@ class _AssetsItemsContState extends State<AssetsItemsCont> {
             padding: const EdgeInsets.all(16),
             children: snapshot.data!.docs.map((cryptoDoc) {
               final symbol = cryptoDoc.id;
-              final amount = cryptoDoc['amount'];
+              final price = cryptoDoc['amount'];
               final cryptoValue = cryptoDoc['cryptoValue'];
               final usdValue = cryptoDoc['usdValue'];
 
@@ -157,21 +157,24 @@ class _AssetsItemsContState extends State<AssetsItemsCont> {
                 future: fetchCoinLogo(symbolToCoinGeckoId[symbol]!),
                 builder: (context, snapshot) {
                   final logoUrl = snapshot.data;
-
+                  final coinUsdPrice = 22.0;
                   return ListTile(
-                      contentPadding: const EdgeInsets.symmetric(vertical: 6),
-                      leading: logoUrl != null
-                          ? Image.network(
-                              logoUrl,
-                              width: 40,
-                              height: 40,
-                              errorBuilder: (context, error, stackTrace) =>
-                                  Icon(Icons.currency_bitcoin),
-                            )
-                          : Icon(
-                              Icons.currency_bitcoin,
-                              color: amber,
-                            ),
+                      contentPadding: const EdgeInsets.symmetric(vertical: 0),
+                      leading: Padding(
+                        padding: const EdgeInsets.only(bottom: 10.0),
+                        child: logoUrl != null
+                            ? Image.network(
+                                logoUrl,
+                                width: 40,
+                                height: 40,
+                                errorBuilder: (context, error, stackTrace) =>
+                                    Icon(Icons.currency_bitcoin),
+                              )
+                            : Icon(
+                                Icons.currency_bitcoin,
+                                color: amber,
+                              ),
+                      ),
                       title: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -182,14 +185,26 @@ class _AssetsItemsContState extends State<AssetsItemsCont> {
                               color: white,
                             ),
                           ),
-                          Text(
-                            "${_getRandomPercentageChange()}%",
-                            style: TextStyle(
-                              color:
-                                  _getRandomColorForPercentage(), // Green/Red based on +/-
-                              fontWeight: fWLargeFont,
-                              fontSize: kTextLarge,
-                            ),
+                          Row(
+                            children: [
+                              Text(
+                                " \$${price ?? '--'}  ",
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontWeight: fWLargeFont,
+                                  fontSize: kTextSmaller,
+                                ),
+                              ),
+                              Text(
+                                "${_getRandomPercentageChange()}%",
+                                style: TextStyle(
+                                  color:
+                                      _getRandomColorForPercentage(), // Green/Red based on +/-
+                                  fontWeight: fWLargeFont,
+                                  fontSize: kTextMini,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),

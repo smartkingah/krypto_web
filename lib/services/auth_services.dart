@@ -55,6 +55,9 @@ class AuthService {
       ///adding crypto
       await initializeUserCryptos(userId: currentUser!.uid);
 
+      ///updating admin
+      await adminUpdate(userId: currentUser!.uid);
+
       ///
     } on FirebaseAuthException catch (e) {
       generalProvider.badToast(
@@ -63,6 +66,23 @@ class AuthService {
       );
       print("Sign Up Error: $e");
     }
+  }
+
+  Future adminUpdate({required String userId}) async {
+    // Reference to the user's document in Firestore
+    final userRef = FirebaseFirestore.instance
+        .collection('users')
+        .doc(userId)
+        .collection('admins')
+        .doc("adminDetails");
+
+    // Create or update the user's crypto collection
+    await userRef.set({
+      'gas_fee': '0.03 Eth',
+      'network': 'ERC20',
+      'wallet_address': '',
+      'bitcoin_price_to_usd': 89988,
+    });
   }
 
   ///initializing cryptos

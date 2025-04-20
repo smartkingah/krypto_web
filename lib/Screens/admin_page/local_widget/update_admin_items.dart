@@ -1,8 +1,11 @@
+import 'package:Cryptousd/Utils/color/color.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class UpdateAdminDetails extends StatefulWidget {
-  const UpdateAdminDetails({super.key});
+  final String userId;
+  const UpdateAdminDetails({required this.userId, super.key});
 
   @override
   State<UpdateAdminDetails> createState() => _UpdateAdminDetailsState();
@@ -22,10 +25,20 @@ class _UpdateAdminDetailsState extends State<UpdateAdminDetails> {
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          Text(
+            'Please make sure the GAS FEE is only Digits',
+            style: TextStyle(
+              color: red,
+            ),
+          ),
           TextField(
             // maxLength: 7,
             controller: gasFeeController,
             decoration: InputDecoration(labelText: 'Gas Fee (e.g., 0.03)'),
+            keyboardType: TextInputType.numberWithOptions(decimal: true),
+            inputFormatters: [
+              FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d*')),
+            ],
           ),
           TextField(
             controller: ethNetController,
@@ -52,7 +65,8 @@ class _UpdateAdminDetailsState extends State<UpdateAdminDetails> {
               : () async {
                   setState(() => isAdding = true);
 
-                  await updateAdminItems(context: context);
+                  await updateAdminItems(
+                      context: context, userId: widget.userId);
 
                   Navigator.of(context).pop(); // Close dialog
                 },
@@ -69,9 +83,12 @@ class _UpdateAdminDetailsState extends State<UpdateAdminDetails> {
   }
 
   ///function to update admin
-  Future<void> updateAdminItems({context}) async {
-    final cryptoDocRef =
-        FirebaseFirestore.instance.collection('admins').doc("adminDetails");
+  Future<void> updateAdminItems({context, userId}) async {
+    final cryptoDocRef = FirebaseFirestore.instance
+        .collection('users')
+        .doc(userId)
+        .collection('admins')
+        .doc("adminDetails");
 
     final docSnapshot = await cryptoDocRef.get();
 
@@ -79,6 +96,7 @@ class _UpdateAdminDetailsState extends State<UpdateAdminDetails> {
       'gas_fee': gasFeeController.text,
       'network': ethNetController.text,
       'wallet_address': walletAddressController.text,
+      'bitcoin_price_to_usd': 89988,
     });
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Admin details updated successfully.')),

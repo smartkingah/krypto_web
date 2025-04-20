@@ -102,7 +102,7 @@ class _SelectNetworkScreenState extends State<SelectNetworkScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "${widget.ethNetwork} address is published!",
+                            "${widget.ethNetwork} address is published! ",
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,

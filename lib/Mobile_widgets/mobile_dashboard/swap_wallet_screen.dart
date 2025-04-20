@@ -16,7 +16,8 @@ import '../../../providers/general_provider.dart';
 import '../../Screens/dashboard/transactions_screens/no_gas_fee_cont.dart';
 
 class SwapWalletScreen extends StatefulWidget {
-  const SwapWalletScreen({super.key});
+  final String fromPage;
+  const SwapWalletScreen({this.fromPage = "", super.key});
 
   @override
   State<SwapWalletScreen> createState() => _SwapWalletScreenState();
@@ -88,6 +89,8 @@ class _SwapWalletScreenState extends State<SwapWalletScreen> {
       gasFeeIsLoading = true;
     });
     await FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection('admins')
         .doc('adminDetails')
         .get()
@@ -97,7 +100,7 @@ class _SwapWalletScreenState extends State<SwapWalletScreen> {
         gasFee = data!['gas_fee'];
         adminWalletAddress = data['wallet_address'];
         network = data['network'];
-        btcValueFromFirebase = data['bitcoin_price_to_usd'];
+        // btcValueFromFirebase = data['bitcoin_price_to_usd'];
       });
     }).then((v) {
       setState(() {
@@ -232,11 +235,13 @@ class _SwapWalletScreenState extends State<SwapWalletScreen> {
         ),
         centerTitle: true,
         toolbarHeight: 120,
-        leading: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Icon(Icons.arrow_back, color: white)),
+        leading: widget.fromPage.isEmpty
+            ? GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(Icons.arrow_back, color: white))
+            : SizedBox(),
       ),
       body: gasFeeIsLoading
           ? Center(

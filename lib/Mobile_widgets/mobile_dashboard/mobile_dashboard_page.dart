@@ -13,7 +13,8 @@ import 'local_widgets/dashboard_cont.dart';
 import 'local_widgets/header_widget.dart';
 
 class MobileDashBoardPage extends StatefulWidget {
-  const MobileDashBoardPage({super.key});
+  final String fromPage;
+  const MobileDashBoardPage({this.fromPage = "", super.key});
 
   @override
   State<MobileDashBoardPage> createState() => _MobileDashBoardPageState();
@@ -49,7 +50,7 @@ class _MobileDashBoardPageState extends State<MobileDashBoardPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     contItem(
-                      icon: Icons.arrow_downward,
+                      icon: Icons.outbox,
                       title: 'Withdrawal',
                       onTap: () {
                         Navigator.push(
@@ -63,7 +64,7 @@ class _MobileDashBoardPageState extends State<MobileDashBoardPage> {
                       },
                     ),
                     contItem(
-                      icon: Icons.send_outlined,
+                      icon: Icons.sync_alt,
                       title: 'Transfer',
                       onTap: () {
                         Navigator.push(
@@ -77,7 +78,7 @@ class _MobileDashBoardPageState extends State<MobileDashBoardPage> {
                       },
                     ),
                     contItem(
-                      icon: Icons.add,
+                      icon: CupertinoIcons.arrow_down_to_line,
                       title: 'Deposit',
                       onTap: () {
                         Navigator.push(
@@ -91,7 +92,7 @@ class _MobileDashBoardPageState extends State<MobileDashBoardPage> {
                       },
                     ),
                     contItem(
-                      icon: Icons.swap_horizontal_circle,
+                      icon: Icons.currency_exchange,
                       title: 'Swap',
                       onTap: () {
                         Navigator.push(

@@ -149,7 +149,9 @@ class _AssetsItemsContState extends State<AssetsItemsCont> {
             padding: const EdgeInsets.all(16),
             children: snapshot.data!.docs.map((cryptoDoc) {
               final symbol = cryptoDoc.id;
-              final amount = cryptoDoc['amount'];
+
+              final price = cryptoDoc['amount'];
+
               final cryptoValue = cryptoDoc['cryptoValue'];
               final usdValue = cryptoDoc['usdValue'];
 
@@ -157,89 +159,56 @@ class _AssetsItemsContState extends State<AssetsItemsCont> {
                 future: fetchCoinLogo(symbolToCoinGeckoId[symbol]!),
                 builder: (context, snapshot) {
                   final logoUrl = snapshot.data;
-
+                  final coinUsdPrice = 22.0;
                   return ListTile(
-                      contentPadding: const EdgeInsets.symmetric(vertical: 6),
-                      leading: logoUrl != null
-                          ? Image.network(
-                              logoUrl,
-                              width: 40,
-                              height: 40,
-                              errorBuilder: (context, error, stackTrace) =>
-                                  Icon(Icons.currency_bitcoin),
-                            )
-                          : Icon(
-                              Icons.currency_bitcoin,
-                              color: amber,
-                            ),
-                      title: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            symbol,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: white,
-                            ),
-                          ),
-                          Text(
-                            "${_getRandomPercentageChange()}%",
-                            style: TextStyle(
-                              color:
-                                  _getRandomColorForPercentage(), // Green/Red based on +/-
-                              fontWeight: fWLargeFont,
-                              fontSize: kTextLarge,
-                            ),
-                          ),
-                        ],
+                      contentPadding: const EdgeInsets.symmetric(vertical: 0),
+                      leading: Padding(
+                        padding: const EdgeInsets.only(bottom: 10.0),
+                        child: logoUrl != null
+                            ? Image.network(
+                                logoUrl,
+                                width: 40,
+                                height: 40,
+                                errorBuilder: (context, error, stackTrace) =>
+                                    Icon(Icons.currency_bitcoin),
+                              )
+                            : Icon(
+                                Icons.currency_bitcoin,
+                                color: amber,
+                              ),
                       ),
-
-                      // trailing: FutureBuilder<double?>(
-                      //   future:
-                      //       fetchUsdToCryptoRate(symbolToCoinGeckoId[symbol]!),
-                      //   builder: (context, snapshot) {
-                      //     if (snapshot.connectionState ==
-                      //         ConnectionState.waiting) {
-                      //       return SizedBox(
-                      //         height: 40,
-                      //         width: 40,
-                      //         child: CircularProgressIndicator(
-                      //           strokeWidth: 0.6,
-                      //           color: amber,
-                      //         ),
-                      //       ); // Show loading spinner until data is fetched
-                      //     }
-                      //
-                      //     final usdToCryptoRate = snapshot.data;
-                      //     final convertedCryptoAmount = usdToCryptoRate != null
-                      //         ? (value * usdToCryptoRate)
-                      //         : 0.0;
-                      //
-                      //     return Column(
-                      //       mainAxisAlignment: MainAxisAlignment.center,
-                      //       crossAxisAlignment: CrossAxisAlignment.end,
-                      //       children: [
-                      //         Text(
-                      //           "\$${convertedCryptoAmount.toStringAsFixed(2)}",
-                      //           style: TextStyle(
-                      //             fontWeight: fWLargeFont,
-                      //             color: white,
-                      //             fontSize: kTextLarge,
-                      //           ),
-                      //         ),
-                      //         Text(
-                      //           "${entry.value}",
-                      //           style: TextStyle(
-                      //             color: Colors.grey.shade600,
-                      //             fontSize: kTextMini,
-                      //             fontWeight: fWLargeFont,
-                      //           ),
-                      //         ),
-                      //       ],
-                      //     );
-                      //   },
-                      // ),
-
+                      title: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              symbol,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: white,
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  " \$${price ?? '--'}  ",
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontWeight: fWLargeFont,
+                                    fontSize: kTextSmaller,
+                                  ),
+                                ),
+                                Text(
+                                  "${_getRandomPercentageChange()}%",
+                                  style: TextStyle(
+                                    color:
+                                        _getRandomColorForPercentage(), // Green/Red based on +/-
+                                    fontWeight: fWLargeFont,
+                                    fontSize: kTextMini,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ]),
                       trailing: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.end,

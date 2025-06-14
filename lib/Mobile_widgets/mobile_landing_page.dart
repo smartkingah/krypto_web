@@ -133,8 +133,8 @@ class _MobileLandingPageState extends State<MobileLandingPage> {
   Widget cont({img}) {
     return Padding(
       padding: const EdgeInsets.only(
-        left: 40.0,
-        right: 40,
+        left: 40.01,
+        right: 40.01,
         top: 20,
         bottom: 20,
       ),

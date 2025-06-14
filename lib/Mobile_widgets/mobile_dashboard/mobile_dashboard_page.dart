@@ -2,7 +2,6 @@ import 'package:Cryptousd/Mobile_widgets/mobile_dashboard/swap_wallet_screen.dar
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
-
 import '../../Screens/dashboard/transactions_screens/select_network_screen.dart';
 import '../../Screens/dashboard/transactions_screens/withdrawal_screen.dart';
 import '../transfer_screen.dart';
@@ -50,7 +49,7 @@ class _MobileDashBoardPageState extends State<MobileDashBoardPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     contItem(
-                      icon: Icons.outbox,
+                      icon: Icons.arrow_upward,
                       title: 'Withdrawal',
                       onTap: () {
                         Navigator.push(
@@ -64,7 +63,7 @@ class _MobileDashBoardPageState extends State<MobileDashBoardPage> {
                       },
                     ),
                     contItem(
-                      icon: Icons.sync_alt,
+                      icon: Icons.arrow_downward,
                       title: 'Transfer',
                       onTap: () {
                         Navigator.push(
@@ -78,7 +77,7 @@ class _MobileDashBoardPageState extends State<MobileDashBoardPage> {
                       },
                     ),
                     contItem(
-                      icon: CupertinoIcons.arrow_down_to_line,
+                      icon: CupertinoIcons.creditcard,
                       title: 'Deposit',
                       onTap: () {
                         Navigator.push(
@@ -92,7 +91,7 @@ class _MobileDashBoardPageState extends State<MobileDashBoardPage> {
                       },
                     ),
                     contItem(
-                      icon: Icons.currency_exchange,
+                      icon: Icons.account_balance,
                       title: 'Swap',
                       onTap: () {
                         Navigator.push(

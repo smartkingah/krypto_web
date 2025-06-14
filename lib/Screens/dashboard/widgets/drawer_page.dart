@@ -1,15 +1,16 @@
+import 'package:Cryptousd/Screens/dashboard/widgets/assets_overviewwidget.dart';
 import 'package:flutter/material.dart';
 
 import 'crypto_assets.dart';
 
-class DrawerPage extends StatefulWidget {
-  const DrawerPage({super.key});
+class MainPageHomeScreen extends StatefulWidget {
+  const MainPageHomeScreen({super.key});
 
   @override
-  State<DrawerPage> createState() => _DrawerPageState();
+  State<MainPageHomeScreen> createState() => _MainPageHomeScreenState();
 }
 
-class _DrawerPageState extends State<DrawerPage> {
+class _MainPageHomeScreenState extends State<MainPageHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,7 +20,18 @@ class _DrawerPageState extends State<DrawerPage> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            Image.network('images/dashB.png'),
+            // Image.network('images/dashB.png'),
+            // SizedBox(height: 10),
+            // Row(
+            //   children: [
+            //     // Image.network(
+            //     //   'images/lop.png',
+            //     //   fit: BoxFit.fitHeight,
+            //     // ),
+            //     AssetOverviewWidget(),
+            //   ],
+            // ),
+            AssetOverviewWidget(),
             SizedBox(height: 10),
             AssetsListScreen(),
           ],

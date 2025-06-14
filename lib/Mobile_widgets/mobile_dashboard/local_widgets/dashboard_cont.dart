@@ -23,33 +23,6 @@ class _DashboardContState extends State<DashboardCont> {
   bool obscure = false;
   String userBalance = '0.0'; // e.g. 200.0
 
-  ///
-  // Future<void> updateUserBalance() async {
-  //   // Reference to the user's cryptos collection
-  //   final cryptosRef = FirebaseFirestore.instance
-  //       .collection('users')
-  //       .doc(FirebaseAuth.instance.currentUser!.uid)
-  //       .collection('cryptos');
-  //
-  //   // Get all the crypto documents for the user
-  //   final cryptosSnapshot = await cryptosRef.get();
-  //
-  //   // Loop through all the cryptos and calculate the total balance
-  //   for (var cryptoDoc in cryptosSnapshot.docs) {
-  //     final symbol = cryptoDoc.id; // The cryptocurrency symbol (e.g., BTC, ETH)
-  //     // final amount = cryptoDoc['amount']; // The amount of crypto the user holds
-  //     final usdValue = cryptoDoc['usdValue']; // The USD value for that crypto
-  //     balanceList.add(usdValue);
-  //     print("balanceList==============>  ${balanceList.toString()}");
-  //     // Add the USD equivalent for this crypto to the total balance
-  //     setState(() {
-  //       // userBalance += amount * usdValue;
-  //       // userBalance = usdValue;
-  //       userBalance = balanceList.reduce((a, b) => a + b);
-  //       // userBalance = balanceList.fold(0, (a, b) => a + b);
-  //     });
-  //   }
-  // }
   Future<void> updateUserBalance() async {
     final cryptosRef = FirebaseFirestore.instance
         .collection('users')

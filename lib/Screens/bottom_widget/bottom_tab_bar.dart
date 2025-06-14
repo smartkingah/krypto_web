@@ -58,15 +58,15 @@ class _BottomTabBarState extends State<BottomTabBar> {
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.sync_alt),
+              icon: Icon(Icons.arrow_downward),
               label: 'Transfer',
             ),
             BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.arrow_down_to_line),
+              icon: Icon(CupertinoIcons.creditcard),
               label: 'Deposit',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.currency_exchange),
+              icon: Icon(Icons.account_balance),
               label: 'Swap',
             ),
             BottomNavigationBarItem(

@@ -79,7 +79,8 @@ class _DashboardPageState extends State<DashboardPage> {
                     ? closedDrawerCont()
                     : LeftDrawerBar(adminList: adminLists),
               ),
-              Expanded(flex: prov.closeDrawer ? 1 : 5, child: DrawerPage()),
+              Expanded(
+                  flex: prov.closeDrawer ? 1 : 5, child: MainPageHomeScreen()),
             ],
           ),
           SizedBox(height: 20),

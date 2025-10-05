@@ -39,12 +39,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MaintenancePage(),
+      home: 
+      // MaintenancePage(),
 
-      // const ResponsiveLayout(
-      //   desktopBody: DesktopBody(),
-      //   mobileBody: MobileBody(),
-      // ),
+      const ResponsiveLayout(
+        desktopBody: DesktopBody(),
+        mobileBody: MobileBody(),
+      ),
     );
   }
 }

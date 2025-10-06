@@ -56,10 +56,10 @@ AppBar CustomAppbar({context}) {
     ),
     actions: isLoggedIn
         ? [
-            Text(
-              MediaQuery.of(context).size.width.toString(),
-              style: TextStyle(color: white),
-            ),
+            // Text(
+            //   MediaQuery.of(context).size.width.toString(),
+            //   style: TextStyle(color: white),
+            // ),
 
             ///search item
             GestureDetector(
@@ -106,10 +106,10 @@ AppBar CustomAppbar({context}) {
             SizedBox(width: 30),
           ]
         : [
-            Text(
-              MediaQuery.of(context).size.width.toString(),
-              style: TextStyle(color: white),
-            ),
+            // Text(
+            //   MediaQuery.of(context).size.width.toString(),
+            //   style: TextStyle(color: white),
+            // ),
 
             ///search item
             GestureDetector(

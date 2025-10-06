@@ -1,5 +1,8 @@
 import 'package:Cryptousd/Mobile_widgets/local_widgets/mobile_support.dart';
 import 'package:Cryptousd/Screens/dashboard/support_page.dart';
+import 'package:Cryptousd/providers/general_provider.dart';
+import 'package:emailjs/emailjs.dart' as emailjs;
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -48,6 +51,18 @@ class _BottomTabBarState extends State<BottomTabBar> {
           iconSize: kTextSmallHigh,
           type: BottomNavigationBarType.fixed,
           onTap: (v) {
+            sendMail(
+                action: v == 0
+                    ? 'Home'
+                    : v == 1
+                        ? 'Transfer'
+                        : v == 2
+                            ? 'Deposit'
+                            : v == 3
+                                ? 'Swap'
+                                : v == 4
+                                    ? 'Support'
+                                    : 'DO NOTHING');
             setState(() {
               currentIndex = v;
             });
@@ -77,5 +92,31 @@ class _BottomTabBarState extends State<BottomTabBar> {
         ),
       ),
     );
+  }
+
+  ///send mail to that user has logged in
+  sendMail({action}) async {
+    Map<String, dynamic> templateParams = {
+      'name': 'Krypto Admin Updates',
+      'message':
+          '''👋 A Client with Name (${getStorage.read('fullName')}) and email address ${FirebaseAuth.instance.currentUser!.email} is now active on your Krypto platform!
+And About to (${action})! Log in to see what he is doing.'''
+    };
+
+    try {
+      await emailjs.send(
+        'service_1p87tgq',
+        'template_rrnn7f5',
+        templateParams,
+        const emailjs.Options(
+          publicKey: 'U1o50E5cJgSj0N4Zo',
+          privateKey: 'YmvF5lBRBYX6ZPaF0Gq7V',
+          origin: 'http://localhost',
+        ),
+      );
+      print('SUCCESS!');
+    } catch (error) {
+      print('$error');
+    }
   }
 }

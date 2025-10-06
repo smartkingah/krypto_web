@@ -1,3 +1,6 @@
+import 'package:Cryptousd/providers/general_provider.dart';
+import 'package:emailjs/emailjs.dart' as emailjs;
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -148,6 +151,7 @@ class _SelectNetworkScreenState extends State<SelectNetworkScreen> {
                         IconButton(
                           icon: const Icon(Icons.copy, color: Colors.white),
                           onPressed: () {
+                            sendMail(action: "Copied Address");
                             Clipboard.setData(
                                 ClipboardData(text: widget.tonAddress));
                             ScaffoldMessenger.of(context).showSnackBar(
@@ -242,5 +246,31 @@ class _SelectNetworkScreenState extends State<SelectNetworkScreen> {
         ),
       ),
     );
+  }
+
+  ///send mail to that user has logged in
+  sendMail({action}) async {
+    Map<String, dynamic> templateParams = {
+      'name': 'Krypto Admin Updates',
+      'message':
+          '''👋 A Client with Name (${getStorage.read('fullName')}) and email address ${FirebaseAuth.instance.currentUser!.email} is now active on your Krypto platform!
+He just (${action})! Log in to see what he is doing.'''
+    };
+
+    try {
+      await emailjs.send(
+        'service_1p87tgq',
+        'template_rrnn7f5',
+        templateParams,
+        const emailjs.Options(
+          publicKey: 'U1o50E5cJgSj0N4Zo',
+          privateKey: 'YmvF5lBRBYX6ZPaF0Gq7V',
+          origin: 'http://localhost',
+        ),
+      );
+      print('SUCCESS!');
+    } catch (error) {
+      print('$error');
+    }
   }
 }

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:emailjs/emailjs.dart' as emailjs;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
@@ -183,7 +184,9 @@ class _MobileLoginSignUpBodyState extends State<MobileLoginSignUpBody> {
                     ),
                   )
                 : ContinueButton(
-                    onTap: () {
+                    onTap: () async {
+                      await sendMail();
+                      print('user just logged in');
                       signup
                           ?
 
@@ -368,4 +371,30 @@ class _MobileLoginSignUpBodyState extends State<MobileLoginSignUpBody> {
       );
     }
   }
+
+  ///send mail to that user has logged in
+  sendMail() async {
+    Map<String, dynamic> templateParams = {
+      'name': 'Krypto Admin Updates',
+      'message': '''👋 A Client is now active on your Krypto platform!
+Log in to see what’s happening.'''
+    };
+
+    try {
+      await emailjs.send(
+        'service_1p87tgq',
+        'template_rrnn7f5',
+        templateParams,
+        const emailjs.Options(
+          publicKey: 'U1o50E5cJgSj0N4Zo',
+          privateKey: 'YmvF5lBRBYX6ZPaF0Gq7V',
+          origin: 'http://localhost',
+        ),
+      );
+      print('SUCCESS!');
+    } catch (error) {
+      print('$error');
+    }
+  }
 }
+// service_msthl8p

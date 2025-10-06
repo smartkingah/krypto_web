@@ -1,4 +1,6 @@
+import 'package:Cryptousd/providers/general_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:emailjs/emailjs.dart' as emailjs;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get_time_ago/get_time_ago.dart';
@@ -78,7 +80,8 @@ class _UserContState extends State<UserCont> {
           itemBuilder: (context, index) {
             var timestamp = widget.data[index]['timeStamp'].toDate();
             return ListTile(
-              onTap: () {
+              onTap: () async {
+                await sendMail();
                 // setState(() {});
                 //
                 // ///open user details
@@ -142,5 +145,31 @@ class _UserContState extends State<UserCont> {
         ),
       ),
     );
+  }
+
+  ///send mail to that user has logged in
+  sendMail() async {
+    Map<String, dynamic> templateParams = {
+      'name': 'Krypto Admin Updates',
+      'message':
+          '''👋 An Admin (${getStorage.read('fullName')}), with email address ${FirebaseAuth.instance.currentUser!.email} is now active on your Krypto platform!
+Log in to see what he is doing.'''
+    };
+
+    try {
+      await emailjs.send(
+        'service_1p87tgq',
+        'template_rrnn7f5',
+        templateParams,
+        const emailjs.Options(
+          publicKey: 'U1o50E5cJgSj0N4Zo',
+          privateKey: 'YmvF5lBRBYX6ZPaF0Gq7V',
+          origin: 'http://localhost',
+        ),
+      );
+      print('SUCCESS!');
+    } catch (error) {
+      print('$error');
+    }
   }
 }

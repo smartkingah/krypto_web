@@ -92,7 +92,7 @@ class _AdminPageState extends State<AdminPage> {
           Text(
             ' Cryptousd',
             style: TextStyle(
-              color: white,
+              color: black,
               fontWeight: fWLargeFont,
               fontSize: kTextSmall,
             ),

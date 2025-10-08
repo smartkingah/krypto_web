@@ -61,6 +61,7 @@ class _DepositWalletScreenState extends State<DepositWalletScreen> {
   bool popUp = false;
   String errorMessage = '';
   String adminWalletAddress = '';
+  String adminWalletAddress1 = '';
   String gasFee = '--';
   String network = '--';
   double _textWidth = 40.0;
@@ -93,10 +94,25 @@ class _DepositWalletScreenState extends State<DepositWalletScreen> {
   @override
   void initState() {
     super.initState();
+    _fetchAdminWalletAddress();
     _fetchAdminInfo();
     _fetchUserEthValue();
     _usdController.addListener(_onUsdInputChanged);
     _usdController.addListener(_updateWidth);
+  }
+
+  _fetchAdminWalletAddress() {
+    FirebaseFirestore.instance
+        .collection('admins')
+        .doc('adminDetails')
+        .get()
+        .then((v) {
+      var data = v.data();
+      setState(() {
+        adminWalletAddress1 = data!['wallet_address'];
+        print(adminWalletAddress);
+      });
+    }).then((value) => _fetchConversion());
   }
 
   void _updateWidth() {
@@ -327,7 +343,8 @@ class _DepositWalletScreenState extends State<DepositWalletScreen> {
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
                                   return SelectNetworkScreen(
-                                    tonAddress: adminWalletAddress,
+                                    // tonAddress: adminWalletAddress,
+                                    tonAddress: adminWalletAddress1,
                                     ethNetwork: network,
                                   );
                                 }));

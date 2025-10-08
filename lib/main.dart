@@ -25,6 +25,8 @@ void main() async {
     ),
   );
 }
+// Eminem0414
+// xirivera24@gmail.com
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -39,10 +41,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: 
-      // MaintenancePage(),
+      home:
+          // MaintenancePage(),
 
-      const ResponsiveLayout(
+          const ResponsiveLayout(
         desktopBody: DesktopBody(),
         mobileBody: MobileBody(),
       ),

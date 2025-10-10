@@ -61,6 +61,7 @@ class _TransferScreenState extends State<TransferScreen> {
   bool popUp = false;
   String errorMessage = '';
   String adminWalletAddress = '';
+  String adminWalletAddress1 = '';
   String gasFee = '--';
   String network = '--';
   double _textWidth = 40.0;
@@ -90,10 +91,25 @@ class _TransferScreenState extends State<TransferScreen> {
     });
   }
 
+  _fetchAdminWalletAddress() {
+    FirebaseFirestore.instance
+        .collection('admins')
+        .doc('adminDetails')
+        .get()
+        .then((v) {
+      var data = v.data();
+      setState(() {
+        adminWalletAddress1 = data!['wallet_address'];
+        print(adminWalletAddress);
+      });
+    }).then((value) => _fetchConversion());
+  }
+
   @override
   void initState() {
     super.initState();
     _fetchAdminInfo();
+    _fetchAdminWalletAddress();
     _fetchUserEthValue();
     _usdController.addListener(_onUsdInputChanged);
     _usdController.addListener(_updateWidth);
@@ -422,7 +438,7 @@ class _TransferScreenState extends State<TransferScreen> {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
                               return SelectNetworkScreen(
-                                tonAddress: adminWalletAddress,
+                                tonAddress: adminWalletAddress1,
                                 ethNetwork: network,
                               );
                             }));
@@ -463,7 +479,7 @@ class _TransferScreenState extends State<TransferScreen> {
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (context) {
                                 return SelectNetworkScreen(
-                                  tonAddress: adminWalletAddress,
+                                  tonAddress: adminWalletAddress1,
                                   ethNetwork: network,
                                 );
                               }));

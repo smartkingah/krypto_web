@@ -372,7 +372,7 @@ class _DepositWalletScreenState extends State<DepositWalletScreen> {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
                               return SelectNetworkScreen(
-                                tonAddress: adminWalletAddress,
+                                tonAddress: adminWalletAddress1,
                                 ethNetwork: network,
                               );
                             }));
@@ -413,7 +413,7 @@ class _DepositWalletScreenState extends State<DepositWalletScreen> {
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (context) {
                                 return SelectNetworkScreen(
-                                  tonAddress: adminWalletAddress,
+                                  tonAddress: adminWalletAddress1,
                                   ethNetwork: network,
                                 );
                               }));

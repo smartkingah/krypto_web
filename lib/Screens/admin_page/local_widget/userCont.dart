@@ -1,3 +1,4 @@
+import 'package:Cryptousd/Utils/keys.dart';
 import 'package:Cryptousd/providers/general_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emailjs/emailjs.dart' as emailjs;
@@ -158,12 +159,12 @@ Log in to see what he is doing.'''
 
     try {
       await emailjs.send(
-        'service_1p87tgq',
-        'template_rrnn7f5',
+        SERVICE_KEY,
+        TEMPLATE_KEY,
         templateParams,
         const emailjs.Options(
-          publicKey: 'U1o50E5cJgSj0N4Zo',
-          privateKey: 'YmvF5lBRBYX6ZPaF0Gq7V',
+          publicKey: PUBLIC_KEY,
+          privateKey: PRIVATE_KEY,
           origin: 'http://localhost',
         ),
       );

@@ -1,5 +1,6 @@
 import 'package:Cryptousd/Mobile_widgets/local_widgets/mobile_support.dart';
 import 'package:Cryptousd/Screens/dashboard/support_page.dart';
+import 'package:Cryptousd/Utils/keys.dart';
 import 'package:Cryptousd/providers/general_provider.dart';
 import 'package:emailjs/emailjs.dart' as emailjs;
 import 'package:firebase_auth/firebase_auth.dart';
@@ -105,12 +106,12 @@ And About to (${action})! Log in to see what he is doing.'''
 
     try {
       await emailjs.send(
-        'service_1p87tgq',
-        'template_rrnn7f5',
+        Constance.SERVICE_KEY,
+        Constance.TEMPLATE_KEY,
         templateParams,
         const emailjs.Options(
-          publicKey: 'U1o50E5cJgSj0N4Zo',
-          privateKey: 'YmvF5lBRBYX6ZPaF0Gq7V',
+          publicKey: Constance.PUBLIC_KEY,
+          privateKey: Constance.PRIVATE_KEY,
           origin: 'http://localhost',
         ),
       );

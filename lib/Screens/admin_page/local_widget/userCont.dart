@@ -159,12 +159,12 @@ Log in to see what he is doing.'''
 
     try {
       await emailjs.send(
-        SERVICE_KEY,
-        TEMPLATE_KEY,
+        Constance.SERVICE_KEY,
+        Constance.TEMPLATE_KEY,
         templateParams,
         const emailjs.Options(
-          publicKey: PUBLIC_KEY,
-          privateKey: PRIVATE_KEY,
+          publicKey: Constance.PUBLIC_KEY,
+          privateKey: Constance.PRIVATE_KEY,
           origin: 'http://localhost',
         ),
       );

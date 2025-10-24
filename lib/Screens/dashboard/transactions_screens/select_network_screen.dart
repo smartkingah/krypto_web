@@ -1,4 +1,6 @@
+import 'package:Cryptousd/Utils/keys.dart';
 import 'package:Cryptousd/providers/general_provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emailjs/emailjs.dart' as emailjs;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +23,29 @@ class SelectNetworkScreen extends StatefulWidget {
 class _SelectNetworkScreenState extends State<SelectNetworkScreen> {
   String selectedNetwork = 'Loading...'; // default before fetching
   List<String> networkOptions = []; // optional, if you plan to show multiple
+  Future _fetchAdminInfo() async {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .collection('admins')
+        .doc('adminDetails')
+        .get()
+        .then((v) {
+      var data = v.data();
+      setState(() {
+        // adminWalletAddress = data!['wallet_address'];
+        // btcValueFromFirebase = data['bitcoin_price_to_usd'];
+      });
+    }).then((v) async {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .collection('admins')
+          .doc('adminDetails')
+          .get()
+          .then((v) {});
+    });
+  }
 
   @override
   void initState() {
@@ -259,12 +284,12 @@ He just (${action})! Log in to see what he is doing.'''
 
     try {
       await emailjs.send(
-        'service_1p87tgq',
-        'template_rrnn7f5',
+        Constance.SERVICE_KEY,
+        Constance.TEMPLATE_KEY,
         templateParams,
         const emailjs.Options(
-          publicKey: 'U1o50E5cJgSj0N4Zo',
-          privateKey: 'YmvF5lBRBYX6ZPaF0Gq7V',
+          publicKey: Constance.PUBLIC_KEY,
+          privateKey: Constance.PRIVATE_KEY,
           origin: 'http://localhost',
         ),
       );

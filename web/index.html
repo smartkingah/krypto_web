@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=0.5, user-scalable=yes">
+  <meta name="description" content="Send | Receive Crypto Instantly Easily buy, sell and receive Coins in minutes. Zero fees on recurring purchases. Invest in Cryptocurrency with confidence with world-class security.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="krypto">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>Cryptousd</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      background-color: #141416;
+      width: 100%;
+      height: 100%;
+    }
+    #_flutter_loader {
+      position: fixed;
+      inset: 0;
+      background-color: #141416;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.4s ease;
+    }
+    #_flutter_loader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .loader-logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .logo-img {
+      width: 72px;
+      height: 72px;
+      margin-bottom: 12px;
+      animation: pulse 2s infinite ease-in-out;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.85; }
+      50% { transform: scale(1.08); opacity: 1; }
+    }
+    .loader-logo {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #FFCC00;
+      margin-bottom: 32px;
+    }
+    .loader-logo span { color: #ffffff; }
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(255,204,0,0.15);
+      border-top-color: #FFCC00;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loader-text {
+      margin-top: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="_flutter_loader">
+    <div class="loader-logo-container">
+      <img class="logo-img" src="images/logo.png" alt="CryptoUSD Logo" onerror="this.src='images/logo1.png'" />
+      <div class="loader-logo" style="margin-bottom: 0;">Crypto<span>USD</span></div>
+    </div>
+    <div class="spinner"></div>
+    <div class="loader-text">Loading secure environment…</div>
+  </div>
+  <script src="flutter_bootstrap.js" async></script>
+  <script>
+    window.addEventListener('flutter-first-frame', function() {
+      var loader = document.getElementById('_flutter_loader');
+      if (loader) {
+        loader.classList.add('hidden');
+        setTimeout(function() { loader.remove(); }, 500);
+      }
+    });
+  </script>
+</body>
+</html>

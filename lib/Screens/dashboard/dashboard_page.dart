@@ -51,7 +51,7 @@ class _DashboardPageState extends State<DashboardPage> {
     final user = FirebaseAuth.instance.currentUser;
     
     if (user == null) {
-      return const SizedBox(
+      return SizedBox(
         height: 300,
         child: Center(
           child: CircularProgressIndicator(

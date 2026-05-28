@@ -123,42 +123,64 @@ class _AssetsItemsContState extends State<AssetsItemsCont> {
     return StreamBuilder<QuerySnapshot>(
       stream: cryptosRef.snapshots(),
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
-        }
-
-        if (snapshot.data!.docs.isEmpty) {
-          return Text(
-            "No crypto data found.",
-            style: TextStyle(color: white),
+        if (snapshot.hasError) {
+          return Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Center(
+              child: Text(
+                "Error loading assets: ${snapshot.error}",
+                style: const TextStyle(color: Colors.red),
+              ),
+            ),
           );
         }
 
-        // final cryptoDoc = snapshot.data!.docs.first;
-        // final docId = cryptoDoc.id;
-        // final cryptos = cryptoDoc.get("cryptos") as Map<String, dynamic>;
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(
+            child: Padding(
+              padding: EdgeInsets.all(20.0),
+              child: CircularProgressIndicator(color: amber),
+            ),
+          );
+        }
+
+        if (snapshot.data == null || snapshot.data!.docs.isEmpty) {
+          return const Padding(
+            padding: EdgeInsets.all(20.0),
+            child: Center(
+              child: Text(
+                "No crypto data found.",
+                style: TextStyle(color: white),
+              ),
+            ),
+          );
+        }
 
         return RefreshIndicator(
           onRefresh: () async {
             setState(() {}); // Triggers rebuild and refetch
           },
           child: ListView(
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             padding: const EdgeInsets.all(16),
             children: snapshot.data!.docs.map((cryptoDoc) {
               final symbol = cryptoDoc.id;
 
-              final price = cryptoDoc['amount'];
+              final data = cryptoDoc.data() as Map<String, dynamic>?;
+              final price = data?['amount'];
+              final cryptoValue = data?['cryptoValue'];
+              final usdValue = data?['usdValue'];
 
-              final cryptoValue = cryptoDoc['cryptoValue'];
-              final usdValue = cryptoDoc['usdValue'];
+              final coinGeckoId = symbolToCoinGeckoId[symbol.toUpperCase()];
+              final logoFuture = coinGeckoId != null
+                  ? fetchCoinLogo(coinGeckoId)
+                  : Future<String?>.value(null);
 
               return FutureBuilder<String?>(
-                future: fetchCoinLogo(symbolToCoinGeckoId[symbol]!),
-                builder: (context, snapshot) {
-                  final logoUrl = snapshot.data;
-                  final coinUsdPrice = 22.0;
+                future: logoFuture,
+                builder: (context, logoSnapshot) {
+                  final logoUrl = logoSnapshot.data;
                   return ListTile(
                       contentPadding: const EdgeInsets.symmetric(vertical: 0),
                       leading: Padding(
@@ -169,9 +191,9 @@ class _AssetsItemsContState extends State<AssetsItemsCont> {
                                 width: 40,
                                 height: 40,
                                 errorBuilder: (context, error, stackTrace) =>
-                                    Icon(Icons.currency_bitcoin),
+                                    const Icon(Icons.currency_bitcoin, color: amber),
                               )
-                            : Icon(
+                            : const Icon(
                                 Icons.currency_bitcoin,
                                 color: amber,
                               ),
@@ -181,7 +203,7 @@ class _AssetsItemsContState extends State<AssetsItemsCont> {
                           children: [
                             Text(
                               symbol,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: white,
                               ),
@@ -190,7 +212,7 @@ class _AssetsItemsContState extends State<AssetsItemsCont> {
                               children: [
                                 Text(
                                   " \$${price ?? '--'}  ",
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.grey,
                                     fontWeight: fWLargeFont,
                                     fontSize: kTextSmaller,
@@ -214,14 +236,14 @@ class _AssetsItemsContState extends State<AssetsItemsCont> {
                         children: [
                           Text(
                             formatCurrency(usdValue),
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: fWLargeFont,
                               color: white,
                               fontSize: kTextLarge,
                             ),
                           ),
                           Text(
-                            "$cryptoValue",
+                            cryptoValue?.toString() ?? '0.00',
                             style: TextStyle(
                               color: Colors.grey.shade600,
                               fontSize: kTextMini,
@@ -279,8 +301,14 @@ class _AssetsItemsContState extends State<AssetsItemsCont> {
     );
   }
 
-  String formatCurrency(double value) {
+  String formatCurrency(dynamic value) {
+    double doubleValue = 0.0;
+    if (value is num) {
+      doubleValue = value.toDouble();
+    } else if (value is String) {
+      doubleValue = double.tryParse(value) ?? 0.0;
+    }
     final formatter = NumberFormat.currency(symbol: '\$', decimalDigits: 2);
-    return formatter.format(value);
+    return formatter.format(doubleValue);
   }
 }

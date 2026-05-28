@@ -21,41 +21,58 @@ class _DashboardContState extends State<DashboardCont> {
   String userBalance = '0.0'; // e.g. 200.0
 
   Future<void> updateUserBalance() async {
-    final cryptosRef = FirebaseFirestore.instance
-        .collection('users')
-        .doc(FirebaseAuth.instance.currentUser!.uid)
-        .collection('cryptos');
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      FirebaseAuth.instance.authStateChanges().listen((user) async {
+        if (user != null && mounted) {
+          await _fetchAndSetBalance(user.uid);
+        }
+      });
+      return;
+    }
+    await _fetchAndSetBalance(user.uid);
+  }
 
-    final cryptosSnapshot = await cryptosRef.get();
+  Future<void> _fetchAndSetBalance(String uid) async {
+    try {
+      final cryptosRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(uid)
+          .collection('cryptos');
 
-    double totalBalance = 0.0;
+      final cryptosSnapshot = await cryptosRef.get();
 
-    for (var cryptoDoc in cryptosSnapshot.docs) {
-      final rawUsdValue = cryptoDoc['usdValue'];
+      double totalBalance = 0.0;
 
-      // Convert to double safely
-      double usdValue = 0.0;
-      if (rawUsdValue is String) {
-        usdValue = double.tryParse(rawUsdValue) ?? 0.0;
-      } else if (rawUsdValue is num) {
-        usdValue = rawUsdValue.toDouble();
+      for (var cryptoDoc in cryptosSnapshot.docs) {
+        final data = cryptoDoc.data() as Map<String, dynamic>?;
+        final rawUsdValue = data?['usdValue'];
+
+        // Convert to double safely
+        double usdValue = 0.0;
+        if (rawUsdValue is String) {
+          usdValue = double.tryParse(rawUsdValue) ?? 0.0;
+        } else if (rawUsdValue is num) {
+          usdValue = rawUsdValue.toDouble();
+        }
+
+        totalBalance += usdValue;
       }
 
-      totalBalance += usdValue;
+      if (mounted) {
+        setState(() {
+          userBalance = totalBalance.toString();
+          Provider.of<GeneralProvider>(context, listen: false)
+              .setUserBalance(data: userBalance);
+        });
+      }
+    } catch (e) {
+      print("Error fetching total balance: $e");
     }
-
-    setState(() {
-      userBalance = totalBalance.toString();
-      Provider.of<GeneralProvider>(context, listen: false)
-          .setUserBalance(data: userBalance);
-      print(
-          "userBalace=========================---------===========> ${Provider.of<GeneralProvider>(context, listen: false).setUserBalance(data: userBalance)}");
-    });
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     updateUserBalance();
   }

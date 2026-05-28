@@ -14,6 +14,27 @@ class AssetsItems extends StatefulWidget {
 class _AssetsItemsState extends State<AssetsItems> {
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      return StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting || !snapshot.hasData || snapshot.data == null) {
+            return const Center(
+              child: Padding(
+                padding: EdgeInsets.all(20.0),
+                child: CircularProgressIndicator(color: amber),
+              ),
+            );
+          }
+          return _buildAssetsStack(snapshot.data!.uid);
+        },
+      );
+    }
+    return _buildAssetsStack(user.uid);
+  }
+
+  Widget _buildAssetsStack(String uid) {
     return Stack(
       children: [
         bg(),
@@ -23,7 +44,7 @@ class _AssetsItemsState extends State<AssetsItems> {
             children: [
               header(),
               AssetsItemsCont(
-                userId: FirebaseAuth.instance.currentUser!.uid,
+                userId: uid,
               ),
             ],
           ),

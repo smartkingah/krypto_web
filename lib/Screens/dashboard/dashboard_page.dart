@@ -1,5 +1,6 @@
 import 'package:Cryptousd/Screens/dashboard/widgets/drawer_page.dart';
 import 'package:Cryptousd/Screens/dashboard/widgets/leftDrawerBar.dart';
+import 'package:Cryptousd/Utils/color/color.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

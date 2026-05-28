@@ -19,7 +19,7 @@ const moreLikeTxt = Color(0xff5A6084);
 const saveBtnBg = Color.fromARGB(255, 230, 45, 128);
 const profileBottomSheetBG = Color(0xff151A34);
 const textFieldBG = Color(0xff1F2339);
-var amber = Color(0xffFFCC00);
+const amber = Color(0xffFFCC00);
 
 ///bottom bar color
 

@@ -179,7 +179,7 @@ class _FaqPageState extends State<FaqPage> {
                   borderRadius: BorderRadius.circular(20),
                   border: isSelected
                       ? null
-                      : Border.all(color: Colors.grey.withOpacity(0.2)),
+                      : Border.all(color: Colors.grey.withValues(alpha: 0.2)),
                 ),
                 child: Text(_categories[i],
                     style: TextStyle(
@@ -208,7 +208,7 @@ class _FaqPageState extends State<FaqPage> {
               color: Color(0xFF18191D),
               borderRadius: BorderRadius.circular(12),
               border: isExpanded
-                  ? Border.all(color: amber.withOpacity(0.3))
+                  ? Border.all(color: amber.withValues(alpha: 0.3))
                   : null,
             ),
             child: Theme(
@@ -232,7 +232,7 @@ class _FaqPageState extends State<FaqPage> {
                   padding: EdgeInsets.all(6),
                   decoration: BoxDecoration(
                     color: isExpanded
-                        ? amber.withOpacity(0.1)
+                        ? amber.withValues(alpha: 0.1)
                         : Color(0xFF141416),
                     shape: BoxShape.circle,
                   ),
@@ -256,7 +256,7 @@ class _FaqPageState extends State<FaqPage> {
                   padding:
                       EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                   decoration: BoxDecoration(
-                    color: amber.withOpacity(0.1),
+                    color: amber.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(faq['category'],
@@ -293,7 +293,7 @@ class _FaqPageState extends State<FaqPage> {
             end: Alignment.bottomRight,
           ),
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Colors.grey.withOpacity(0.1)),
+          border: Border.all(color: Colors.grey.withValues(alpha: 0.1)),
         ),
         child: Row(
           children: [

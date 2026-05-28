@@ -1,4 +1,3 @@
-import 'package:Cryptousd/Screens/maintenance_page.dart';
 import 'package:Cryptousd/providers/general_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

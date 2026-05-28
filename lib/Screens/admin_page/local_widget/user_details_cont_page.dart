@@ -135,7 +135,7 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFF6366F1).withOpacity(0.2),
+                          color: const Color(0xFF6366F1).withValues(alpha: 0.2),
                           blurRadius: 10,
                           spreadRadius: 2,
                         ),
@@ -169,7 +169,7 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
                         Text(
                           email,
                           style: TextStyle(
-                            color: Colors.white.withOpacity(0.4),
+                            color: Colors.white.withValues(alpha: 0.4),
                             fontSize: 13,
                           ),
                         ),
@@ -183,7 +183,7 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
                       Text(
                         "VALUATION BALANCE",
                         style: TextStyle(
-                          color: Colors.white.withOpacity(0.3),
+                          color: Colors.white.withValues(alpha: 0.3),
                           fontSize: 9.5,
                           fontWeight: FontWeight.bold,
                           letterSpacing: 1.0,
@@ -211,7 +211,7 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
                 Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: amber.withOpacity(0.12),
+                    color: amber.withValues(alpha: 0.12),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Icon(
@@ -316,7 +316,7 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
                 Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF10B981).withOpacity(0.12),
+                    color: const Color(0xFF10B981).withValues(alpha: 0.12),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: const Icon(
@@ -384,12 +384,12 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
                       child: Center(
                         child: Column(
                           children: [
-                            Icon(Icons.pie_chart_outline, size: 40, color: Colors.white.withOpacity(0.15)),
+                            Icon(Icons.pie_chart_outline, size: 40, color: Colors.white.withValues(alpha: 0.15)),
                             const SizedBox(height: 12),
                             Text(
                               "No crypto balances currently allocated to this user.",
                               style: TextStyle(
-                                color: Colors.white.withOpacity(0.3),
+                                color: Colors.white.withValues(alpha: 0.3),
                                 fontSize: 13,
                               ),
                             ),
@@ -434,9 +434,9 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
                                 Container(
                                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                                   decoration: BoxDecoration(
-                                    color: amber.withOpacity(0.1),
+                                    color: amber.withValues(alpha: 0.1),
                                     borderRadius: BorderRadius.circular(6),
-                                    border: Border.all(color: amber.withOpacity(0.2), width: 0.8),
+                                    border: Border.all(color: amber.withValues(alpha: 0.2), width: 0.8),
                                   ),
                                   child: Text(
                                     data.id.toString().toUpperCase(),
@@ -452,7 +452,7 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
                                 Text(
                                   "Asset Configuration",
                                   style: TextStyle(
-                                    color: Colors.white.withOpacity(0.4),
+                                    color: Colors.white.withValues(alpha: 0.4),
                                     fontSize: 12,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -562,7 +562,7 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
         Text(
           label.toUpperCase(),
           style: TextStyle(
-            color: Colors.white.withOpacity(0.35),
+            color: Colors.white.withValues(alpha: 0.35),
             fontSize: 10,
             fontWeight: FontWeight.bold,
             letterSpacing: 0.5,
@@ -586,7 +586,7 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
               enabled: enabled,
               inputFormatters: inputFormatters,
               style: TextStyle(
-                color: enabled ? Colors.white : Colors.white.withOpacity(0.35),
+                color: enabled ? Colors.white : Colors.white.withValues(alpha: 0.35),
                 fontSize: 13.5,
                 fontWeight: FontWeight.w500,
               ),
@@ -616,7 +616,7 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
         Text(
           label,
           style: TextStyle(
-            color: Colors.white.withOpacity(0.35),
+            color: Colors.white.withValues(alpha: 0.35),
             fontSize: 10.5,
             fontWeight: FontWeight.bold,
           ),
@@ -700,7 +700,7 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
           borderRadius: BorderRadius.circular(borderRadius),
           boxShadow: [
             BoxShadow(
-              color: (gradient?.colors.first ?? amber).withOpacity(0.2),
+              color: (gradient?.colors.first ?? amber).withValues(alpha: 0.2),
               blurRadius: 8,
               offset: const Offset(0, 2),
             ),
@@ -733,9 +733,9 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.red.withOpacity(0.04),
+        color: Colors.red.withValues(alpha: 0.04),
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.red.withOpacity(0.12), width: 0.8),
+        border: Border.all(color: Colors.red.withValues(alpha: 0.12), width: 0.8),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -762,7 +762,7 @@ class _UserDetailsContPageState extends State<UserDetailsContPage> {
                 Text(
                   message,
                   style: TextStyle(
-                    color: Colors.white.withOpacity(0.5),
+                    color: Colors.white.withValues(alpha: 0.5),
                     fontSize: 11.5,
                     height: 1.4,
                   ),

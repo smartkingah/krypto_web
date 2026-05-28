@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import '../Utils/color/color.dart';
 import '../Utils/dimens.dart';
 import '../providers/general_provider.dart';
-import '../services/auth_services.dart';
 
 AppBar mobileCustomAppbar({context}) {
   var prov = Provider.of<GeneralProvider>(context);

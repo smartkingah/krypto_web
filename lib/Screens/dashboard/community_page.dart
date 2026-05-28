@@ -282,7 +282,7 @@ class _CommunityPageState extends State<CommunityPage>
                 borderRadius: BorderRadius.circular(20),
                 border: isSelected
                     ? null
-                    : Border.all(color: Colors.grey.withOpacity(0.2)),
+                    : Border.all(color: Colors.grey.withValues(alpha: 0.2)),
               ),
               child: Text(_categories[i],
                   style: TextStyle(
@@ -304,7 +304,7 @@ class _CommunityPageState extends State<CommunityPage>
         color: Color(0xFF18191D),
         borderRadius: BorderRadius.circular(12),
         border: post['pinned'] == true
-            ? Border.all(color: amber.withOpacity(0.3))
+            ? Border.all(color: amber.withValues(alpha: 0.3))
             : null,
       ),
       child: Column(
@@ -353,7 +353,7 @@ class _CommunityPageState extends State<CommunityPage>
                 padding:
                     EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(
-                  color: amber.withOpacity(0.1),
+                  color: amber.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(post['category'],
@@ -448,7 +448,7 @@ class _CommunityPageState extends State<CommunityPage>
                 children: [
                   Text('${i + 1}',
                       style: TextStyle(
-                          color: Colors.grey.withOpacity(0.5),
+                          color: Colors.grey.withValues(alpha: 0.5),
                           fontSize: kTextMini,
                           fontWeight: fWLargeFont),
                       textAlign: TextAlign.center),
@@ -510,7 +510,7 @@ class _CommunityPageState extends State<CommunityPage>
           SizedBox(height: 4),
           Text('Connect with 8,000+ traders in real time.',
               style: TextStyle(
-                  color: white.withOpacity(0.8), fontSize: kTextMini)),
+                  color: white.withValues(alpha: 0.8), fontSize: kTextMini)),
           SizedBox(height: 12),
           SizedBox(
             width: double.infinity,

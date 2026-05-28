@@ -243,7 +243,7 @@ class _HistoryPageState extends State<HistoryPage>
             Container(
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: color.withOpacity(0.1),
+                color: color.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Icon(icon, color: color, size: 20),
@@ -337,7 +337,7 @@ class _HistoryPageState extends State<HistoryPage>
       child: DataTable(
         dividerThickness: 0.2,
         headingRowColor:
-            MaterialStateColor.resolveWith((_) => Color(0xFF141416)),
+            WidgetStateColor.resolveWith((_) => Color(0xFF141416)),
         columns: [
           DataColumn(
               label: Text('Type', style: TextStyle(color: Colors.grey))),
@@ -367,7 +367,7 @@ class _HistoryPageState extends State<HistoryPage>
             DataCell(Container(
               padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
-                color: typeColor.withOpacity(0.1),
+                color: typeColor.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(6),
               ),
               child: Text(tx['type'],
@@ -382,7 +382,7 @@ class _HistoryPageState extends State<HistoryPage>
             DataCell(Container(
               padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
-                color: statusColor.withOpacity(0.1),
+                color: statusColor.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(6),
               ),
               child: Text(tx['status'],

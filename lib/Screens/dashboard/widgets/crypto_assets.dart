@@ -82,7 +82,7 @@ class _AssetsListScreenState extends State<AssetsListScreen> {
                 : DataTable(
                     dividerThickness: 0.2,
                     decoration: BoxDecoration(),
-                    headingRowColor: MaterialStateColor.resolveWith(
+                    headingRowColor: WidgetStateColor.resolveWith(
                       (states) => Color(0xFF18191D),
                     ),
                     columns: const [

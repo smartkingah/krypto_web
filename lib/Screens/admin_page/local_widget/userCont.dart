@@ -107,7 +107,7 @@ class _UserContState extends State<UserCont> {
                 Text(
                   "Manage, view and allocate assets to registered accounts.",
                   style: TextStyle(
-                    color: Colors.white.withOpacity(0.4),
+                    color: Colors.white.withValues(alpha: 0.4),
                     fontSize: 12.5,
                   ),
                 ),
@@ -144,7 +144,7 @@ class _UserContState extends State<UserCont> {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Row(
             children: [
-              Icon(Icons.search, color: Colors.white.withOpacity(0.3), size: 20),
+              Icon(Icons.search, color: Colors.white.withValues(alpha: 0.3), size: 20),
               const SizedBox(width: 12),
               Expanded(
                 child: TextField(
@@ -158,7 +158,7 @@ class _UserContState extends State<UserCont> {
                   decoration: InputDecoration(
                     hintText: "Search accounts by full name or email address...",
                     hintStyle: TextStyle(
-                      color: Colors.white.withOpacity(0.25),
+                      color: Colors.white.withValues(alpha: 0.25),
                       fontSize: 13.5,
                     ),
                     border: InputBorder.none,
@@ -168,7 +168,7 @@ class _UserContState extends State<UserCont> {
               ),
               if (_searchQuery.isNotEmpty)
                 IconButton(
-                  icon: Icon(Icons.clear, color: Colors.white.withOpacity(0.5), size: 18),
+                  icon: Icon(Icons.clear, color: Colors.white.withValues(alpha: 0.5), size: 18),
                   onPressed: () {
                     setState(() {
                       _searchController.clear();
@@ -188,12 +188,12 @@ class _UserContState extends State<UserCont> {
                   padding: const EdgeInsets.symmetric(vertical: 60.0),
                   child: Column(
                     children: [
-                      Icon(Icons.person_search, size: 48, color: Colors.white.withOpacity(0.15)),
+                      Icon(Icons.person_search, size: 48, color: Colors.white.withValues(alpha: 0.15)),
                       const SizedBox(height: 12),
                       Text(
                         "No matches found for '$_searchQuery'",
                         style: TextStyle(
-                          color: Colors.white.withOpacity(0.3),
+                          color: Colors.white.withValues(alpha: 0.3),
                           fontSize: 14,
                         ),
                       ),
@@ -273,8 +273,8 @@ class _UserContState extends State<UserCont> {
                                           Container(
                                             padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                                             decoration: BoxDecoration(
-                                              color: Colors.red.withOpacity(0.12),
-                                              border: Border.all(color: Colors.red.withOpacity(0.3), width: 0.6),
+                                              color: Colors.red.withValues(alpha: 0.12),
+                                              border: Border.all(color: Colors.red.withValues(alpha: 0.3), width: 0.6),
                                               borderRadius: BorderRadius.circular(4),
                                             ),
                                             child: const Text(
@@ -293,7 +293,7 @@ class _UserContState extends State<UserCont> {
                                     Text(
                                       email,
                                       style: TextStyle(
-                                        color: Colors.white.withOpacity(0.4),
+                                        color: Colors.white.withValues(alpha: 0.4),
                                         fontSize: 12.5,
                                       ),
                                     ),
@@ -314,7 +314,7 @@ class _UserContState extends State<UserCont> {
                                     child: Text(
                                       "Joined ${GetTimeAgo.parse(timestamp)}",
                                       style: TextStyle(
-                                        color: Colors.white.withOpacity(0.55),
+                                        color: Colors.white.withValues(alpha: 0.55),
                                         fontSize: 11,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -326,7 +326,7 @@ class _UserContState extends State<UserCont> {
                               // View details arrow
                               Icon(
                                 Icons.chevron_right,
-                                color: Colors.white.withOpacity(0.2),
+                                color: Colors.white.withValues(alpha: 0.2),
                                 size: 20,
                               )
                             ],
@@ -363,7 +363,7 @@ class _UserContState extends State<UserCont> {
           Text(
             "$label: ",
             style: TextStyle(
-              color: Colors.white.withOpacity(0.4),
+              color: Colors.white.withValues(alpha: 0.4),
               fontSize: 11.5,
               fontWeight: FontWeight.w500,
             ),

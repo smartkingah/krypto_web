@@ -127,7 +127,7 @@ class _SupportPageState extends State<SupportPage> {
             decoration: BoxDecoration(
               color: const Color(0xFF18191D),
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: Colors.grey.withOpacity(0.12)),
+              border: Border.all(color: Colors.grey.withValues(alpha: 0.12)),
             ),
             child: Row(
               children: [
@@ -185,7 +185,7 @@ class _SupportPageState extends State<SupportPage> {
       decoration: BoxDecoration(
         color: const Color(0xFF18191D),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: Colors.grey.withOpacity(0.09)),
+        border: Border.all(color: Colors.grey.withValues(alpha: 0.09)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -195,7 +195,7 @@ class _SupportPageState extends State<SupportPage> {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: amber.withOpacity(0.1),
+                  color: amber.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Icon(c['icon'] as IconData, color: amber, size: 20),
@@ -205,7 +205,7 @@ class _SupportPageState extends State<SupportPage> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                 decoration: BoxDecoration(
-                  color: (c['badgeColor'] as Color).withOpacity(0.12),
+                  color: (c['badgeColor'] as Color).withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(c['badge'] as String,
@@ -232,7 +232,7 @@ class _SupportPageState extends State<SupportPage> {
               onPressed: () {},
               style: OutlinedButton.styleFrom(
                 foregroundColor: amber,
-                side: BorderSide(color: amber.withOpacity(0.4)),
+                side: BorderSide(color: amber.withValues(alpha: 0.4)),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8)),
                 padding: const EdgeInsets.symmetric(vertical: 10),
@@ -281,14 +281,14 @@ class _SupportPageState extends State<SupportPage> {
         decoration: BoxDecoration(
           color: const Color(0xFF18191D),
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: const Color(0xFF00C076).withOpacity(0.3)),
+          border: Border.all(color: const Color(0xFF00C076).withValues(alpha: 0.3)),
         ),
         child: Column(
           children: [
             Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: const Color(0xFF00C076).withOpacity(0.1),
+                color: const Color(0xFF00C076).withValues(alpha: 0.1),
                 shape: BoxShape.circle,
               ),
               child: const Icon(Icons.check_circle_outline,
@@ -322,7 +322,7 @@ class _SupportPageState extends State<SupportPage> {
       decoration: BoxDecoration(
         color: const Color(0xFF18191D),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.grey.withOpacity(0.08)),
+        border: Border.all(color: Colors.grey.withValues(alpha: 0.08)),
       ),
       child: Form(
         key: _formKey,
@@ -392,15 +392,15 @@ class _SupportPageState extends State<SupportPage> {
             fillColor: const Color(0xFF141416),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Colors.grey.withOpacity(0.15)),
+              borderSide: BorderSide(color: Colors.grey.withValues(alpha: 0.15)),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Colors.grey.withOpacity(0.15)),
+              borderSide: BorderSide(color: Colors.grey.withValues(alpha: 0.15)),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: amber.withOpacity(0.6)),
+              borderSide: BorderSide(color: amber.withValues(alpha: 0.6)),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
@@ -434,7 +434,7 @@ class _SupportPageState extends State<SupportPage> {
           decoration: BoxDecoration(
             color: const Color(0xFF141416),
             borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: Colors.grey.withOpacity(0.15)),
+            border: Border.all(color: Colors.grey.withValues(alpha: 0.15)),
           ),
           child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
@@ -476,15 +476,15 @@ class _SupportPageState extends State<SupportPage> {
             fillColor: const Color(0xFF141416),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Colors.grey.withOpacity(0.15)),
+              borderSide: BorderSide(color: Colors.grey.withValues(alpha: 0.15)),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Colors.grey.withOpacity(0.15)),
+              borderSide: BorderSide(color: Colors.grey.withValues(alpha: 0.15)),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: amber.withOpacity(0.6)),
+              borderSide: BorderSide(color: amber.withValues(alpha: 0.6)),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
@@ -493,8 +493,9 @@ class _SupportPageState extends State<SupportPage> {
             contentPadding: const EdgeInsets.all(14),
           ),
           validator: (v) {
-            if (v == null || v.trim().length < 20)
+            if (v == null || v.trim().length < 20) {
               return 'Please describe your issue (min. 20 characters)';
+            }
             return null;
           },
         ),
@@ -508,7 +509,7 @@ class _SupportPageState extends State<SupportPage> {
       decoration: BoxDecoration(
         color: const Color(0xFF18191D),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.grey.withOpacity(0.08)),
+        border: Border.all(color: Colors.grey.withValues(alpha: 0.08)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -529,9 +530,9 @@ class _SupportPageState extends State<SupportPage> {
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: amber.withOpacity(0.06),
+              color: amber.withValues(alpha: 0.06),
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: amber.withOpacity(0.15)),
+              border: Border.all(color: amber.withValues(alpha: 0.15)),
             ),
             child: Row(
               children: [

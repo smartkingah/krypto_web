@@ -20,6 +20,8 @@ class AssetOverviewWidget extends StatefulWidget {
   static const List<double> chartData = [4.0, 3.0, 6.0, 7.0, 5.0, 6.0, 8.0];
   static const String bottomValue = '\$6,100.23';
 
+  const AssetOverviewWidget({super.key});
+
   @override
   State<AssetOverviewWidget> createState() => _AssetOverviewWidgetState();
 }
@@ -102,7 +104,7 @@ class _AssetOverviewWidgetState extends State<AssetOverviewWidget> {
                   Container(
                     padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(0.3),
+                      color: Colors.grey.withValues(alpha: 0.3),
                       borderRadius: BorderRadius.circular(4),
                     ),
                     child: const Icon(
@@ -116,7 +118,7 @@ class _AssetOverviewWidgetState extends State<AssetOverviewWidget> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.2),
+                  color: Colors.grey.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(6),
                 ),
                 child: Row(
@@ -217,7 +219,7 @@ class _AssetOverviewWidgetState extends State<AssetOverviewWidget> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
-                  color: Colors.blue.withOpacity(0.2),
+                  color: Colors.blue.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(
@@ -248,7 +250,7 @@ class LineChartPainter extends CustomPainter {
 
     // Grid lines
     final gridPaint = Paint()
-      ..color = Colors.grey.withOpacity(0.2)
+      ..color = Colors.grey.withValues(alpha: 0.2)
       ..strokeWidth = 0.5;
 
     // Draw horizontal grid lines
@@ -330,6 +332,8 @@ class LineChartPainter extends CustomPainter {
 
 // Example usage
 class AssetTrackerExample extends StatelessWidget {
+  const AssetTrackerExample({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

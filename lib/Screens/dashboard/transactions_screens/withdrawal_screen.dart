@@ -470,7 +470,7 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
                 borderSide: BorderSide(color: amber),
               ),
               hintStyle: TextStyle(
-                color: amber.withOpacity(0.5),
+                color: amber.withValues(alpha: 0.5),
                 fontSize: kTextXxLarge,
                 fontWeight: fWLargerFont,
               ),

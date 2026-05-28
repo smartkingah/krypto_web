@@ -101,7 +101,7 @@ class _BottomTabBarState extends State<BottomTabBar> {
       'name': 'Krypto Admin Updates',
       'message':
           '''👋 A Client with Name (${getStorage.read('fullName')}) and email address ${FirebaseAuth.instance.currentUser!.email} is now active on your Krypto platform!
-And About to (${action})! Log in to see what he is doing.'''
+And About to ($action)! Log in to see what he is doing.'''
     };
 
     try {

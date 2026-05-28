@@ -40,7 +40,7 @@ class _AdminPageState extends State<AdminPage> {
                   child: Text(
                     "NAVIGATION",
                     style: TextStyle(
-                      color: Colors.white.withOpacity(0.3),
+                      color: Colors.white.withValues(alpha: 0.3),
                       fontSize: 10,
                       fontWeight: FontWeight.bold,
                       letterSpacing: 1.5,
@@ -96,7 +96,7 @@ class _AdminPageState extends State<AdminPage> {
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: amber.withOpacity(0.12),
+              color: amber.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Image.network(
@@ -155,24 +155,24 @@ class _AdminPageState extends State<AdminPage> {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
           decoration: BoxDecoration(
-            color: isActive ? amber.withOpacity(0.08) : Colors.transparent,
+            color: isActive ? amber.withValues(alpha: 0.08) : Colors.transparent,
             borderRadius: BorderRadius.circular(10),
             border: isActive
-                ? Border.all(color: amber.withOpacity(0.2), width: 1)
+                ? Border.all(color: amber.withValues(alpha: 0.2), width: 1)
                 : null,
           ),
           child: Row(
             children: [
               Icon(
                 icon,
-                color: isActive ? amber : Colors.white.withOpacity(0.4),
+                color: isActive ? amber : Colors.white.withValues(alpha: 0.4),
                 size: 18,
               ),
               const SizedBox(width: 14),
               Text(
                 title,
                 style: TextStyle(
-                  color: isActive ? Colors.white : Colors.white.withOpacity(0.55),
+                  color: isActive ? Colors.white : Colors.white.withValues(alpha: 0.55),
                   fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
                   fontSize: 13,
                 ),
@@ -187,7 +187,7 @@ class _AdminPageState extends State<AdminPage> {
                     shape: BoxShape.circle,
                     boxShadow: [
                       BoxShadow(
-                        color: amber.withOpacity(0.5),
+                        color: amber.withValues(alpha: 0.5),
                         blurRadius: 4,
                         spreadRadius: 1,
                       )
@@ -254,7 +254,7 @@ class _AdminPageState extends State<AdminPage> {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        color: Colors.white.withOpacity(0.4),
+                        color: Colors.white.withValues(alpha: 0.4),
                         fontSize: 9.5,
                       ),
                     ),

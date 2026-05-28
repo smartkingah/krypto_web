@@ -122,9 +122,9 @@ class _LandingPageState extends State<LandingPage>
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
           decoration: BoxDecoration(
-            color: amber.withOpacity(0.1),
+            color: amber.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: amber.withOpacity(0.25)),
+            border: Border.all(color: amber.withValues(alpha: 0.25)),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -214,7 +214,7 @@ class _LandingPageState extends State<LandingPage>
           color: filled ? amber : Colors.transparent,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
-              color: filled ? amber : Colors.grey.withOpacity(0.3)),
+              color: filled ? amber : Colors.grey.withValues(alpha: 0.3)),
         ),
         child: Text(
           label,
@@ -267,10 +267,10 @@ class _LandingPageState extends State<LandingPage>
           decoration: BoxDecoration(
             color: const Color(0xFF18191D),
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: amber.withOpacity(0.15)),
+            border: Border.all(color: amber.withValues(alpha: 0.15)),
             boxShadow: [
               BoxShadow(
-                color: amber.withOpacity(0.06),
+                color: amber.withValues(alpha: 0.06),
                 blurRadius: 40,
                 spreadRadius: 4,
               ),
@@ -312,14 +312,14 @@ class _LandingPageState extends State<LandingPage>
                     if (i > 0)
                       Divider(
                           height: 20,
-                          color: Colors.grey.withOpacity(0.08)),
+                          color: Colors.grey.withValues(alpha: 0.08)),
                     Row(
                       children: [
                         Container(
                           width: 36,
                           height: 36,
                           decoration: BoxDecoration(
-                            color: amber.withOpacity(0.08),
+                            color: amber.withValues(alpha: 0.08),
                             shape: BoxShape.circle,
                           ),
                           child: Center(
@@ -369,7 +369,7 @@ class _LandingPageState extends State<LandingPage>
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 6, vertical: 2),
                               decoration: BoxDecoration(
-                                color: changeColor.withOpacity(0.12),
+                                color: changeColor.withValues(alpha: 0.12),
                                 borderRadius: BorderRadius.circular(4),
                               ),
                               child: Text(
@@ -428,7 +428,7 @@ class _LandingPageState extends State<LandingPage>
       decoration: BoxDecoration(
         color: const Color(0xFF18191D),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey.withOpacity(0.08)),
+        border: Border.all(color: Colors.grey.withValues(alpha: 0.08)),
       ),
       child: Row(
         children: [
@@ -465,7 +465,7 @@ class _LandingPageState extends State<LandingPage>
       decoration: BoxDecoration(
         color: const Color(0xFF0E0F12),
         border: Border.symmetric(
-          horizontal: BorderSide(color: Colors.grey.withOpacity(0.08)),
+          horizontal: BorderSide(color: Colors.grey.withValues(alpha: 0.08)),
         ),
       ),
       padding: EdgeInsets.symmetric(
@@ -494,7 +494,7 @@ class _LandingPageState extends State<LandingPage>
         Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: amber.withOpacity(0.08),
+            color: amber.withValues(alpha: 0.08),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Icon(s['icon'] as IconData, color: amber, size: 16),
@@ -578,7 +578,7 @@ class _LandingPageState extends State<LandingPage>
                         color: const Color(0xFF18191D),
                         borderRadius: BorderRadius.circular(16),
                         border:
-                            Border.all(color: Colors.grey.withOpacity(0.08)),
+                            Border.all(color: Colors.grey.withValues(alpha: 0.08)),
                       ),
                       child: Column(
                         children: _liveCoins.take(5).toList().asMap().entries.map((e) {
@@ -603,7 +603,7 @@ class _LandingPageState extends State<LandingPage>
                                           width: 32,
                                           height: 32,
                                           decoration: BoxDecoration(
-                                            color: amber.withOpacity(0.08),
+                                            color: amber.withValues(alpha: 0.08),
                                             shape: BoxShape.circle,
                                           ),
                                           child: Center(
@@ -647,7 +647,7 @@ class _LandingPageState extends State<LandingPage>
                                         child: Container(
                                           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                                           decoration: BoxDecoration(
-                                            color: cc.withOpacity(0.1),
+                                            color: cc.withValues(alpha: 0.1),
                                             borderRadius: BorderRadius.circular(6),
                                           ),
                                           child: Row(
@@ -679,9 +679,9 @@ class _LandingPageState extends State<LandingPage>
                           padding: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
                           decoration: BoxDecoration(
-                            color: amber.withOpacity(0.08),
+                            color: amber.withValues(alpha: 0.08),
                             borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: amber.withOpacity(0.25)),
+                            border: Border.all(color: amber.withValues(alpha: 0.25)),
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -789,7 +789,7 @@ class _LandingPageState extends State<LandingPage>
       decoration: BoxDecoration(
         color: const Color(0xFF18191D),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.grey.withOpacity(0.07)),
+        border: Border.all(color: Colors.grey.withValues(alpha: 0.07)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -797,7 +797,7 @@ class _LandingPageState extends State<LandingPage>
           Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
+              color: color.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Icon(f['icon'] as IconData, color: color, size: 22),
@@ -878,7 +878,7 @@ class _LandingPageState extends State<LandingPage>
           decoration: BoxDecoration(
             color: const Color(0xFF18191D),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: Colors.grey.withOpacity(0.07)),
+            border: Border.all(color: Colors.grey.withValues(alpha: 0.07)),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -888,7 +888,7 @@ class _LandingPageState extends State<LandingPage>
                   Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: amber.withOpacity(0.1),
+                      color: amber.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Icon(step['icon'] as IconData, color: amber, size: 22),
@@ -897,7 +897,7 @@ class _LandingPageState extends State<LandingPage>
                   Text(
                     step['step'] as String,
                     style: TextStyle(
-                      color: Colors.grey.withOpacity(0.12),
+                      color: Colors.grey.withValues(alpha: 0.12),
                       fontSize: 44,
                       fontWeight: FontWeight.w900,
                     ),
@@ -926,7 +926,7 @@ class _LandingPageState extends State<LandingPage>
               height: 26,
               decoration: BoxDecoration(
                 color: const Color(0xFF141416),
-                border: Border.all(color: Colors.grey.withOpacity(0.15)),
+                border: Border.all(color: Colors.grey.withValues(alpha: 0.15)),
                 shape: BoxShape.circle,
               ),
               child: Icon(Icons.arrow_forward,
@@ -997,7 +997,7 @@ class _LandingPageState extends State<LandingPage>
       decoration: BoxDecoration(
         color: const Color(0xFF18191D),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.grey.withOpacity(0.07)),
+        border: Border.all(color: Colors.grey.withValues(alpha: 0.07)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1022,7 +1022,7 @@ class _LandingPageState extends State<LandingPage>
                 width: 36,
                 height: 36,
                 decoration: BoxDecoration(
-                  color: amber.withOpacity(0.15),
+                  color: amber.withValues(alpha: 0.15),
                   shape: BoxShape.circle,
                 ),
                 child: Center(
@@ -1073,10 +1073,10 @@ class _LandingPageState extends State<LandingPage>
           ],
         ),
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: amber.withOpacity(0.2)),
+        border: Border.all(color: amber.withValues(alpha: 0.2)),
         boxShadow: [
           BoxShadow(
-            color: amber.withOpacity(0.04),
+            color: amber.withValues(alpha: 0.04),
             blurRadius: 60,
             spreadRadius: 8,
           ),
@@ -1155,7 +1155,7 @@ class _LandingPageState extends State<LandingPage>
         decoration: BoxDecoration(
           color: const Color(0xFF141416),
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Colors.grey.withOpacity(0.1)),
+          border: Border.all(color: Colors.grey.withValues(alpha: 0.1)),
         ),
         child: Row(
           children: [
@@ -1202,8 +1202,9 @@ class _LandingPageState extends State<LandingPage>
   String _fmtPrice(dynamic v) {
     if (v == null) return '--';
     final d = (v as num).toDouble();
-    if (d >= 1000)
+    if (d >= 1000) {
       return '\$${d.toStringAsFixed(2).replaceAllMapped(RegExp(r'(\d)(?=(\d{3})+(?!\d))'), (m) => '${m[1]},')}';
+    }
     if (d >= 1) return '\$${d.toStringAsFixed(2)}';
     return '\$${d.toStringAsFixed(6)}';
   }
@@ -1241,8 +1242,8 @@ class _BarChartPainter extends CustomPainter {
       final h = _values[i] * size.height;
       final isUp = i > 0 && _values[i] >= _values[i - 1];
       paint.color = isUp
-          ? const Color(0xFF00C076).withOpacity(0.75)
-          : const Color(0xFFFF4747).withOpacity(0.65);
+          ? const Color(0xFF00C076).withValues(alpha: 0.75)
+          : const Color(0xFFFF4747).withValues(alpha: 0.65);
       canvas.drawRRect(
         RRect.fromRectAndRadius(
           Rect.fromLTWH(x, size.height - h, barW, h),

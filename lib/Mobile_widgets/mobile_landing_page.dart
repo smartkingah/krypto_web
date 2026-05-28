@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../Widgets/customeAppBar.dart';
-import '../../Widgets/footer_page.dart';
-import '../../Widgets/subCont.dart';
 import 'local_widgets/mobile_footer.dart';
 import 'local_widgets/mobile_sub_cont.dart';
 import '../providers/general_provider.dart';

@@ -127,8 +127,8 @@ class _PriceTickerState extends State<PriceTicker> {
       decoration: BoxDecoration(
         color: const Color(0xFF0E0F12),
         border: Border(
-          bottom: BorderSide(color: Colors.grey.withOpacity(0.12), width: 1),
-          top: BorderSide(color: Colors.grey.withOpacity(0.12), width: 1),
+          bottom: BorderSide(color: Colors.grey.withValues(alpha: 0.12), width: 1),
+          top: BorderSide(color: Colors.grey.withValues(alpha: 0.12), width: 1),
         ),
       ),
       child: _loading
@@ -166,7 +166,7 @@ class _PriceTickerState extends State<PriceTicker> {
                 Container(
                   width: 1,
                   height: 20,
-                  color: Colors.grey.withOpacity(0.15),
+                  color: Colors.grey.withValues(alpha: 0.15),
                   margin: const EdgeInsets.only(right: 12),
                 ),
                 // Icon
@@ -182,7 +182,7 @@ class _PriceTickerState extends State<PriceTicker> {
                       height: 18,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: amber.withOpacity(0.2),
+                        color: amber.withValues(alpha: 0.2),
                       ),
                       child: Icon(Icons.currency_bitcoin,
                           size: 10, color: amber),
@@ -215,7 +215,7 @@ class _PriceTickerState extends State<PriceTicker> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
                   decoration: BoxDecoration(
-                    color: changeColor.withOpacity(0.12),
+                    color: changeColor.withValues(alpha: 0.12),
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Text(
@@ -248,7 +248,7 @@ class _PriceTickerState extends State<PriceTicker> {
             Container(
               width: 1,
               height: 20,
-              color: Colors.grey.withOpacity(0.15),
+              color: Colors.grey.withValues(alpha: 0.15),
               margin: const EdgeInsets.only(right: 12),
             ),
             _shimmerBox(18, 18, circular: true),
@@ -269,7 +269,7 @@ class _PriceTickerState extends State<PriceTicker> {
       width: w,
       height: h,
       decoration: BoxDecoration(
-        color: Colors.grey.withOpacity(0.15),
+        color: Colors.grey.withValues(alpha: 0.15),
         borderRadius: circular
             ? BorderRadius.circular(9999)
             : BorderRadius.circular(3),
@@ -283,12 +283,12 @@ class _PriceTickerState extends State<PriceTicker> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(Icons.wifi_off_outlined,
-              color: Colors.grey.withOpacity(0.5), size: 14),
+              color: Colors.grey.withValues(alpha: 0.5), size: 14),
           const SizedBox(width: 6),
           Text(
             'Live prices unavailable — tap to retry',
             style: TextStyle(
-                color: Colors.grey.withOpacity(0.5), fontSize: kTextMini),
+                color: Colors.grey.withValues(alpha: 0.5), fontSize: kTextMini),
           ),
           const SizedBox(width: 10),
           GestureDetector(
@@ -302,9 +302,9 @@ class _PriceTickerState extends State<PriceTicker> {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
               decoration: BoxDecoration(
-                color: amber.withOpacity(0.1),
+                color: amber.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(6),
-                border: Border.all(color: amber.withOpacity(0.3)),
+                border: Border.all(color: amber.withValues(alpha: 0.3)),
               ),
               child: Text('Retry',
                   style: TextStyle(

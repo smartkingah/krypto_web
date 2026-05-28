@@ -1,11 +1,9 @@
 import 'package:Cryptousd/Utils/keys.dart';
 import 'package:Cryptousd/Widgets/tField.dart';
 import 'package:emailjs/emailjs.dart' as emailjs;
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:provider/provider.dart';
 
 import '../Utils/color/color.dart';
 import '../Utils/dimens.dart';

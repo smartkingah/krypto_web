@@ -6,11 +6,11 @@ class GasFeeInfo extends StatelessWidget {
   final VoidCallback onLearnMoreClicked;
 
   const GasFeeInfo({
-    Key? key,
+    super.key,
     required this.depositAmount,
     required this.onDepositClicked,
     required this.onLearnMoreClicked,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

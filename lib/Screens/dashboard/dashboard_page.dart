@@ -26,26 +26,43 @@ class _DashboardPageState extends State<DashboardPage> {
   }
 
   fetchAdminList() async {
-    await FirebaseFirestore.instance
-        .collection('admins')
-        .doc('adminsList')
-        .get()
-        .then(
-      (v) {
-        var data = v.data();
-        setState(() {
-          adminLists = data!['email'];
-          print(adminLists);
-        });
-      },
-    );
+    try {
+      await FirebaseFirestore.instance
+          .collection('admins')
+          .doc('adminsList')
+          .get()
+          .then((v) {
+        if (v.exists) {
+          var data = v.data();
+          setState(() {
+            adminLists = data?['email'] ?? [];
+            print(adminLists);
+          });
+        }
+      });
+    } catch (e) {
+      print("Error fetching admin list: $e");
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     var prov = Provider.of<GeneralProvider>(context, listen: false);
-    bool isAdmin =
-        adminLists.contains(FirebaseAuth.instance.currentUser!.email);
+    final user = FirebaseAuth.instance.currentUser;
+    
+    if (user == null) {
+      return const SizedBox(
+        height: 300,
+        child: Center(
+          child: CircularProgressIndicator(
+            color: amber,
+            strokeWidth: 1.5,
+          ),
+        ),
+      );
+    }
+
+    bool isAdmin = user.email != null && adminLists.contains(user.email);
     if (isAdmin) {
       return AdminPage();
     } else {

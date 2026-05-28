@@ -4,18 +4,11 @@ import 'package:provider/provider.dart';
 import '../Mobile_widgets/local_widgets/mobile_faq.dart';
 import '../Mobile_widgets/local_widgets/mobile_support.dart';
 import '../Mobile_widgets/mobile_appBar.dart';
-import '../Mobile_widgets/mobile_dashboard/mobile_dashboard_page.dart';
 import '../Mobile_widgets/mobile_drawer.dart';
 import '../Mobile_widgets/mobile_landing_page.dart';
 import '../Mobile_widgets/mobile_login_signup_page.dart';
 import '../Screens/bottom_widget/bottom_tab_bar.dart';
-import '../Screens/dashboard/dashboard_page.dart';
-import '../Screens/dashboard/faq_page.dart';
 import '../Screens/dashboard/market/market_screen.dart';
-import '../Screens/dashboard/support_page.dart';
-import '../Screens/landing_page/landing_page.dart';
-import '../Widgets/customeAppBar.dart';
-import '../Widgets/login_body.dart';
 import '../providers/general_provider.dart';
 
 class MobileBody extends StatefulWidget {

@@ -79,7 +79,7 @@ class GeneralProvider extends ChangeNotifier {
         ),
         child: ToastCard(
           leading: CircleAvatar(
-            backgroundColor: Colors.green.withOpacity(0.25),
+            backgroundColor: Colors.green.withValues(alpha: 0.25),
             child: const Icon(
               Icons.check,
               color: Colors.green,
@@ -114,7 +114,7 @@ class GeneralProvider extends ChangeNotifier {
         ),
         child: ToastCard(
           leading: CircleAvatar(
-            backgroundColor: Colors.red.withOpacity(0.25),
+            backgroundColor: Colors.red.withValues(alpha: 0.25),
             child: const Icon(
               Icons.clear,
               color: Colors.red,
@@ -149,7 +149,7 @@ class GeneralProvider extends ChangeNotifier {
         ),
         child: ToastCard(
           leading: CircleAvatar(
-            backgroundColor: Colors.amber.withOpacity(0.25),
+            backgroundColor: Colors.amber.withValues(alpha: 0.25),
             child: const Icon(
               Icons.warning_amber,
               color: Colors.amber,

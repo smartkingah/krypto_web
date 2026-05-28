@@ -33,7 +33,7 @@ class _SearchFilterBarState extends State<SearchFilterBar> {
           SizedBox(width: 300),
           Row(
             children: [
-              Container(
+              SizedBox(
                 width: 200,
                 child: Tfield(
                   contr: searchController,

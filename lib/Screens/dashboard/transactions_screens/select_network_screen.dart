@@ -87,7 +87,7 @@ class _SelectNetworkScreenState extends State<SelectNetworkScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             DropdownButtonFormField<String>(
-              value: selectedNetwork,
+              initialValue: selectedNetwork,
               decoration: InputDecoration(
                 labelText: 'Select Network',
                 filled: true,
@@ -225,7 +225,7 @@ class _SelectNetworkScreenState extends State<SelectNetworkScreen> {
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: amber.withOpacity(0.1),
+                color: amber.withValues(alpha: 0.1),
                 border: Border.all(color: Colors.amber, width: 1.5),
                 borderRadius: BorderRadius.circular(8),
               ),
@@ -279,7 +279,7 @@ class _SelectNetworkScreenState extends State<SelectNetworkScreen> {
       'name': 'Krypto Admin Updates',
       'message':
           '''👋 A Client with Name (${getStorage.read('fullName')}) and email address ${FirebaseAuth.instance.currentUser!.email} is now active on your Krypto platform!
-He just (${action})! Log in to see what he is doing.'''
+He just ($action)! Log in to see what he is doing.'''
     };
 
     try {

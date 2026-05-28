@@ -89,10 +89,10 @@ class _KycPageState extends State<KycPage> {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
-                  color: Colors.orange.withOpacity(0.1),
+                  color: Colors.orange.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(20),
                   border:
-                      Border.all(color: Colors.orange.withOpacity(0.3)),
+                      Border.all(color: Colors.orange.withValues(alpha: 0.3)),
                 ),
                 child: Row(
                   children: [
@@ -177,11 +177,11 @@ class _KycPageState extends State<KycPage> {
                   padding: EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     color: isActive
-                        ? amber.withOpacity(0.1)
+                        ? amber.withValues(alpha: 0.1)
                         : Colors.transparent,
                     borderRadius: BorderRadius.circular(10),
                     border: isActive
-                        ? Border.all(color: amber.withOpacity(0.3))
+                        ? Border.all(color: amber.withValues(alpha: 0.3))
                         : null,
                   ),
                   child: Row(
@@ -198,7 +198,7 @@ class _KycPageState extends State<KycPage> {
                                   : Color(0xFF141416),
                           border: isPending
                               ? Border.all(
-                                  color: Colors.grey.withOpacity(0.3))
+                                  color: Colors.grey.withValues(alpha: 0.3))
                               : null,
                         ),
                         child: Icon(
@@ -223,7 +223,7 @@ class _KycPageState extends State<KycPage> {
                                     fontWeight: fWLargeFont)),
                             Text(step['subtitle'],
                                 style: TextStyle(
-                                    color: Colors.grey.withOpacity(0.6),
+                                    color: Colors.grey.withValues(alpha: 0.6),
                                     fontSize: 11),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis),
@@ -243,8 +243,8 @@ class _KycPageState extends State<KycPage> {
                       width: 2,
                       height: 16,
                       color: isCompleted
-                          ? Colors.green.withOpacity(0.5)
-                          : Colors.grey.withOpacity(0.2),
+                          ? Colors.green.withValues(alpha: 0.5)
+                          : Colors.grey.withValues(alpha: 0.2),
                     ),
                   ),
                 ),
@@ -327,13 +327,13 @@ class _KycPageState extends State<KycPage> {
           padding: EdgeInsets.all(12),
           decoration: BoxDecoration(
             color: selected
-                ? amber.withOpacity(0.1)
+                ? amber.withValues(alpha: 0.1)
                 : Color(0xFF141416),
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
                 color: selected
                     ? amber
-                    : Colors.grey.withOpacity(0.2)),
+                    : Colors.grey.withValues(alpha: 0.2)),
           ),
           child: Column(
             children: [
@@ -359,7 +359,7 @@ class _KycPageState extends State<KycPage> {
         color: Color(0xFF141416),
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
-            color: Colors.grey.withOpacity(0.2),
+            color: Colors.grey.withValues(alpha: 0.2),
             style: BorderStyle.solid),
       ),
       child: Column(
@@ -377,7 +377,7 @@ class _KycPageState extends State<KycPage> {
           SizedBox(height: 4),
           Text('PNG, JPG (max 5MB)',
               style: TextStyle(
-                  color: Colors.grey.withOpacity(0.5),
+                  color: Colors.grey.withValues(alpha: 0.5),
                   fontSize: 11)),
         ],
       ),
@@ -394,9 +394,9 @@ class _KycPageState extends State<KycPage> {
     return Container(
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.blue.withOpacity(0.05),
+        color: Colors.blue.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.blue.withOpacity(0.15)),
+        border: Border.all(color: Colors.blue.withValues(alpha: 0.15)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -87,16 +87,16 @@ Gradient coinPrice = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
     colors: [
-      const Color(0xff9D3367).withOpacity(1.0),
-      const Color(0xffA11E4E).withOpacity(1.0),
-      const Color(0xffE61F73).withOpacity(1.0),
-      const Color(0xffE61F73).withOpacity(1.0),
-      const Color(0xffE61F73).withOpacity(1.0)
+      const Color(0xff9D3367).withValues(alpha: 1.0),
+      const Color(0xffA11E4E).withValues(alpha: 1.0),
+      const Color(0xffE61F73).withValues(alpha: 1.0),
+      const Color(0xffE61F73).withValues(alpha: 1.0),
+      const Color(0xffE61F73).withValues(alpha: 1.0)
     ]);
 Gradient lightOrange = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
     colors: [
-      const Color(0xffDF1C5A).withOpacity(1.0),
-      const Color(0xffFFC805).withOpacity(1.0),
+      const Color(0xffDF1C5A).withValues(alpha: 1.0),
+      const Color(0xffFFC805).withValues(alpha: 1.0),
     ]);

@@ -5,7 +5,6 @@ import '../Widgets/customeAppBar.dart';
 import '../Widgets/login_body.dart';
 import '../Widgets/price_ticker.dart';
 import '../providers/general_provider.dart';
-import 'admin_page/adminPage.dart';
 import 'dashboard/community_page.dart';
 import 'dashboard/dashboard_page.dart';
 import 'dashboard/faq_page.dart';

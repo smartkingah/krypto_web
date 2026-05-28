@@ -20,7 +20,7 @@ class CurrencyInputFormatter extends TextInputFormatter {
       List<String> parts = newText.split('.');
       String beforeDecimal = formatter.format(int.tryParse(parts[0]) ?? 0);
       String afterDecimal = parts.length > 1 ? parts[1] : '';
-      newText = '$beforeDecimal.${afterDecimal}';
+      newText = '$beforeDecimal.$afterDecimal';
     } else {
       newText = formatter.format(int.tryParse(newText) ?? 0);
     }

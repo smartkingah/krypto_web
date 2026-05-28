@@ -99,10 +99,10 @@ class _SettingsPageState extends State<SettingsPage> {
               margin: EdgeInsets.only(bottom: 4),
               padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
               decoration: BoxDecoration(
-                color: isSelected ? amber.withOpacity(0.1) : Colors.transparent,
+                color: isSelected ? amber.withValues(alpha: 0.1) : Colors.transparent,
                 borderRadius: BorderRadius.circular(8),
                 border: isSelected
-                    ? Border.all(color: amber.withOpacity(0.3))
+                    ? Border.all(color: amber.withValues(alpha: 0.3))
                     : null,
               ),
               child: Row(
@@ -156,7 +156,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   color: white,
                   fontSize: kTextSmallHigh,
                   fontWeight: fWLargeFont)),
-          Divider(color: Colors.grey.withOpacity(0.15), height: 24),
+          Divider(color: Colors.grey.withValues(alpha: 0.15), height: 24),
           ...children,
         ],
       ),
@@ -176,7 +176,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 children: [
                   CircleAvatar(
                     radius: 40,
-                    backgroundColor: amber.withOpacity(0.2),
+                    backgroundColor: amber.withValues(alpha: 0.2),
                     child: Text(
                       name.isNotEmpty ? name[0].toUpperCase() : 'U',
                       style: TextStyle(
@@ -259,7 +259,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 Switch(
                   value: _twoFactor,
                   onChanged: (v) => setState(() => _twoFactor = v),
-                  activeColor: amber,
+                  activeThumbColor: amber,
                 ),
               ],
             ),
@@ -268,10 +268,10 @@ class _SettingsPageState extends State<SettingsPage> {
               Container(
                 padding: EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: Colors.green.withOpacity(0.1),
+                  color: Colors.green.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(
-                      color: Colors.green.withOpacity(0.3)),
+                      color: Colors.green.withValues(alpha: 0.3)),
                 ),
                 child: Row(
                   children: [
@@ -333,7 +333,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 padding:
                     EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
-                  color: Colors.green.withOpacity(0.1),
+                  color: Colors.green.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(6),
                 ),
                 child: Text('Current',
@@ -358,25 +358,25 @@ class _SettingsPageState extends State<SettingsPage> {
             'Receive updates via email', _emailNotifs, (v) {
           setState(() => _emailNotifs = v);
         }),
-        Divider(color: Colors.grey.withOpacity(0.1)),
+        Divider(color: Colors.grey.withValues(alpha: 0.1)),
         _notifToggle('Push Notifications',
             'Browser and device push alerts', _pushNotifs, (v) {
           setState(() => _pushNotifs = v);
         }),
-        Divider(color: Colors.grey.withOpacity(0.1)),
+        Divider(color: Colors.grey.withValues(alpha: 0.1)),
         _notifToggle(
             'SMS Notifications', 'Receive text message alerts', _smsNotifs,
             (v) {
           setState(() => _smsNotifs = v);
         }),
-        Divider(color: Colors.grey.withOpacity(0.1)),
+        Divider(color: Colors.grey.withValues(alpha: 0.1)),
         _notifToggle(
             'Market Price Alerts',
             'Get notified on significant price movements',
             _marketAlerts, (v) {
           setState(() => _marketAlerts = v);
         }),
-        Divider(color: Colors.grey.withOpacity(0.1)),
+        Divider(color: Colors.grey.withValues(alpha: 0.1)),
         _notifToggle('Login Alerts',
             'Get notified of new sign-ins to your account', _loginAlerts,
             (v) {
@@ -410,7 +410,7 @@ class _SettingsPageState extends State<SettingsPage> {
           Switch(
             value: value,
             onChanged: onChanged,
-            activeColor: amber,
+            activeThumbColor: amber,
           ),
         ],
       ),
@@ -422,11 +422,11 @@ class _SettingsPageState extends State<SettingsPage> {
       title: 'Display & Preferences',
       children: [
         _prefItem('Default Currency', 'USD - US Dollar', Icons.attach_money),
-        Divider(color: Colors.grey.withOpacity(0.1)),
+        Divider(color: Colors.grey.withValues(alpha: 0.1)),
         _prefItem('Language', 'English (US)', Icons.language),
-        Divider(color: Colors.grey.withOpacity(0.1)),
+        Divider(color: Colors.grey.withValues(alpha: 0.1)),
         _prefItem('Timezone', 'UTC-5 (Eastern Time)', Icons.access_time),
-        Divider(color: Colors.grey.withOpacity(0.1)),
+        Divider(color: Colors.grey.withValues(alpha: 0.1)),
         _prefItem('Theme', 'Dark Mode', Icons.dark_mode_outlined),
         SizedBox(height: 20),
         _dangerZone(),
@@ -458,9 +458,9 @@ class _SettingsPageState extends State<SettingsPage> {
     return Container(
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.red.withOpacity(0.05),
+        color: Colors.red.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.red.withOpacity(0.2)),
+        border: Border.all(color: Colors.red.withValues(alpha: 0.2)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -489,7 +489,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 onPressed: () {},
                 style: OutlinedButton.styleFrom(
                   foregroundColor: Colors.red,
-                  side: BorderSide(color: Colors.red.withOpacity(0.5)),
+                  side: BorderSide(color: Colors.red.withValues(alpha: 0.5)),
                 ),
                 child: Text('Delete',
                     style: TextStyle(fontSize: kTextSmaller)),
@@ -515,24 +515,24 @@ class _SettingsPageState extends State<SettingsPage> {
           style: TextStyle(color: white, fontSize: kTextSmaller),
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: TextStyle(color: Colors.grey.withOpacity(0.4)),
+            hintStyle: TextStyle(color: Colors.grey.withValues(alpha: 0.4)),
             prefixIcon: Icon(icon, color: Colors.grey, size: 18),
             filled: true,
             fillColor: Color(0xFF141416),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide:
-                  BorderSide(color: Colors.grey.withOpacity(0.2)),
+                  BorderSide(color: Colors.grey.withValues(alpha: 0.2)),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide:
-                  BorderSide(color: Colors.grey.withOpacity(0.2)),
+                  BorderSide(color: Colors.grey.withValues(alpha: 0.2)),
             ),
             disabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide:
-                  BorderSide(color: Colors.grey.withOpacity(0.1)),
+                  BorderSide(color: Colors.grey.withValues(alpha: 0.1)),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),

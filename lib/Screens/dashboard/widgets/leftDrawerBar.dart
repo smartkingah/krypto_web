@@ -72,7 +72,7 @@ class _LeftDrawerBarState extends State<LeftDrawerBar> {
     return Padding(
       padding: const EdgeInsets.only(top: 8.0),
       child: Divider(
-        color: Colors.grey.withOpacity(0.2),
+        color: Colors.grey.withValues(alpha: 0.2),
         thickness: 1,
         height: 0.1,
         indent: 8,

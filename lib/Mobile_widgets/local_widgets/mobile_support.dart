@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../Widgets/footer_page.dart';
 import 'mobile_footer.dart';
 
 class MobileSupportPage extends StatefulWidget {

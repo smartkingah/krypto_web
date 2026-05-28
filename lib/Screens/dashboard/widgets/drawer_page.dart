@@ -13,7 +13,7 @@ class MainPageHomeScreen extends StatefulWidget {
 class _MainPageHomeScreenState extends State<MainPageHomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       // color: Colors.grey.shade300,
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,

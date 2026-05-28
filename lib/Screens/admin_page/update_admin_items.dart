@@ -124,14 +124,14 @@ class _UpdateAdminItemState extends State<UpdateAdminItem> {
       ),
       child: Row(
         children: [
-          Icon(icon, color: Colors.white.withOpacity(0.35), size: 16),
+          Icon(icon, color: Colors.white.withValues(alpha: 0.35), size: 16),
           const SizedBox(width: 8),
           Text(
             '$title:  ',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 11,
-              color: Colors.white.withOpacity(0.55),
+              color: Colors.white.withValues(alpha: 0.55),
             ),
           ),
           Text(
@@ -159,14 +159,14 @@ class _UpdateAdminItemState extends State<UpdateAdminItem> {
       ),
       child: Row(
         children: [
-          Icon(icon, color: Colors.white.withOpacity(0.35), size: 16),
+          Icon(icon, color: Colors.white.withValues(alpha: 0.35), size: 16),
           const SizedBox(width: 8),
           Text(
             '$title:  ',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 11,
-              color: Colors.white.withOpacity(0.55),
+              color: Colors.white.withValues(alpha: 0.55),
             ),
           ),
           const SizedBox(width: 4),

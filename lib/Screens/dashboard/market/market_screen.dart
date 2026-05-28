@@ -22,8 +22,8 @@ class _MarketScreenState extends State<MarketScreen> {
   List<dynamic> cryptoData = [];
   bool isLoading = true;
   bool hasError = false;
-  String _sortColumn = 'market_cap';
-  bool _sortAscending = false;
+  final String _sortColumn = 'market_cap';
+  final bool _sortAscending = false;
 
   @override
   void initState() {
@@ -141,7 +141,7 @@ class _MarketScreenState extends State<MarketScreen> {
             label: Text('Refresh',
                 style: TextStyle(color: amber, fontSize: kTextSmaller)),
             style: TextButton.styleFrom(
-              backgroundColor: amber.withOpacity(0.08),
+              backgroundColor: amber.withValues(alpha: 0.08),
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8)),
@@ -207,14 +207,14 @@ class _MarketScreenState extends State<MarketScreen> {
       decoration: BoxDecoration(
         color: const Color(0xFF18191D),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey.withOpacity(0.08)),
+        border: Border.all(color: Colors.grey.withValues(alpha: 0.08)),
       ),
       child: Row(
         children: [
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: amber.withOpacity(0.1),
+              color: amber.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Icon(s['icon'] as IconData, color: amber, size: 16),
@@ -280,7 +280,7 @@ class _MarketScreenState extends State<MarketScreen> {
         decoration: BoxDecoration(
           color: const Color(0xFF18191D),
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: Colors.grey.withOpacity(0.08)),
+          border: Border.all(color: Colors.grey.withValues(alpha: 0.08)),
         ),
         child: Column(
           children: [
@@ -328,7 +328,7 @@ class _MarketScreenState extends State<MarketScreen> {
       children: [
         InkWell(
           onTap: () {},
-          hoverColor: Colors.white.withOpacity(0.02),
+          hoverColor: Colors.white.withValues(alpha: 0.02),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             child: isDesktop
@@ -353,7 +353,7 @@ class _MarketScreenState extends State<MarketScreen> {
                                 height: 28,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
-                                  color: amber.withOpacity(0.1),
+                                  color: amber.withValues(alpha: 0.1),
                                 ),
                                 child: Icon(Icons.currency_bitcoin,
                                     size: 14, color: amber),
@@ -397,7 +397,7 @@ class _MarketScreenState extends State<MarketScreen> {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 8, vertical: 4),
                           decoration: BoxDecoration(
-                            color: changeColor.withOpacity(0.1),
+                            color: changeColor.withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(6),
                           ),
                           child: Row(
@@ -523,7 +523,7 @@ class _SparklinePainter extends CustomPainter {
       ..shader = LinearGradient(
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
-        colors: [color.withOpacity(0.2), color.withOpacity(0)],
+        colors: [color.withValues(alpha: 0.2), color.withValues(alpha: 0)],
       ).createShader(Rect.fromLTWH(0, 0, size.width, size.height))
       ..style = PaintingStyle.fill;
 
